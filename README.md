@@ -3,7 +3,7 @@
 </code></pre>
 
 ### PERINTAH UPDATE 
-<pre><code>if [[ ! -d /etc/xdtmp ]]; then mkdir -p /etc/xdtmp; fi && wget -q https://raw.githubusercontent.com/Kuzan14/autoscript/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
+<pre><code>if [[ ! -d /etc/xdtmp ]]; then mkdir -p /etc/xdtmp; fi && wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
 
 ### TESTED ON OS 
 - UBUNTU 20.04.05
