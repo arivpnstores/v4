@@ -32,7 +32,7 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-wget https://raw.githubusercontent.com/Kuzan14/autoscript/main/Cdy/menu.zip
+wget https://raw.githubusercontent.com/arivpnstores/v4/main/Cdy/menu.zip
 7z x -pHeyHeyMauDecryptYaAwokawok menu.zip
 chmod +x menu/*
 mv menu/* /usr/local/sbin

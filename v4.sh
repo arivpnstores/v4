@@ -449,7 +449,7 @@ print_success "Password SSH"
 function udp_mini(){
 clear
 print_install "Memasang Service limit Quota"
-wget raw.githubusercontent.com/Kuzan14/autoscript/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
+wget raw.githubusercontent.com/arivpnstores/v4/main/Fls/limit.sh && chmod +x limit.sh && ./limit.sh
 cd
 wget -q -O /usr/bin/limit-ip "${REPO}Fls/limit-ip"
 chmod +x /usr/bin/*
