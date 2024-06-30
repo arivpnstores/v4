@@ -165,9 +165,9 @@ fi
 
 function rif_Banner() {
 clear
-echo -e "\e[1;96m ┌─────────────────────────────────────────────────┐\e[0m"
-echo -e "\e[1;96m │ \e[41;1m                ARISCTUNNEL V4                 \e[0m \e[1;96m│\e[0m"
-echo -e "\e[1;96m └─────────────────────────────────────────────────┘\e[0m"
+echo -e "\e[1;96m┌─────────────────────────────────────────────────┐\e[0m"
+echo -e "\e[1;96m│ \e[41;1m                ARISCTUNNEL V4                 \e[0m \e[1;96m│\e[0m"
+echo -e "\e[1;96m└─────────────────────────────────────────────────┘\e[0m"
 }
 
 function Service_System_Operating() {
@@ -208,14 +208,14 @@ echo -e "${z}   └────────────────────�
 
 function Details_Bw_Clients() {
 echo -e "${z}   ┌───────────────────────────────────────────┐\033[0m "
-echo -e "${z}   │${NC}KEMARIN  |  HARI INI  | BULANAN      \033[0m "
-echo -e "${z}   │${NC}\033[91;1m${bwkmrn1}  ${bwhari}  ${bwbln}\033[0m "
+echo -e "${z}   │ ${NC}KEMARIN  |  HARI INI  | BULANAN      \033[0m "
+echo -e "${z}   │ ${NC}\033[91;1m ${bwkmrn1}    ${bwhari}    ${bwbln}\033[0m "
 echo -e "${z}   └───────────────────────────────────────────┘\033[0m "
 }
 
 function Acces_Use_Command() {
 echo -e "${z} —————————————————————————————————————————————————${NC}"
-echo -e "${z}             acces use \033[93;1m☞ \033[92;1mmenu ${z} command ${NC} " 
+echo -e "${z}           acces use \033[93;1m☞ \033[92;1mmenu ${z} command ${NC} " 
 echo -e "${z} —————————————————————————————————————————————————${NC}"
 }
 
