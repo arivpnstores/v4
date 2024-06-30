@@ -175,7 +175,7 @@ case $hallo in
 4) clear ; sd ;; # menu trojan
 5) clear ; m-noobz ;; # menu sadowsocks
 6) clear ; m-bot ;; # menu bot telegram
-7) clear ; wget -q https://raw.githubusercontent.com/rifstore/RifkyVVIP/main/update.sh && bash update.sh ;; #Update script
+7) clear ; wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && bash update.sh ;; #Update script
 8) clear ; m-bkp ;; # menu backup
 9) clear ; m-ftr ;; # menu managers
 10) exit ;;
