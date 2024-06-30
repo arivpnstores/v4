@@ -31,7 +31,7 @@ pip3 install -r kyt/requirements.txt
 
 #isi data
 echo ""
-figlet  Newbie Vpn  | lolcat
+figlet  ARI BOT  | lolcat
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " \e[1;97;101m          ADD BOT PANEL          \e[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
