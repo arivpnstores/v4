@@ -115,16 +115,16 @@ let ssa=$ssx/2
 
 function xdxl_Banner() {
 clear
-echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
-echo -e "\e[96;1m│\e[0m                ${REDBLD}TUNNELING OFFICIAL${NC}               \e[96;1m│\e[0m"
-echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
+echo -e " \e[1;96m ┌─────────────────────────────────────────────────┐\e[0m"
+echo -e " \e[1;96m │ \e[41;1m                ARISCTUNNEL V4                 \e[0m \e[1;96m│\e[0m"
+echo -e " \e[1;96m └─────────────────────────────────────────────────┘\e[0m"
 }
 
 
 function Service_System_Operating() {
 echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
 echo -e "\033[96;1m│\e[97m SYSTEM          : $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g')     \033[0m "
-echo -e "\033[96;1m│\e[97m RAM             : $(free -m | awk 'NR==2 {print $2}')    \033[0m "
+echo -e "\033[96;1m│\e[97m RAM             : $(free -m | awk 'NR==2 {print $2}') MB \033[0m "
 echo -e "\033[96;1m│\e[97m UPTIME          : $(uptime -p | cut -d " " -f 2-10)\033[0m "
 echo -e "\033[96;1m│\e[97m IP VPS          : $(curl -s ipv4.icanhazip.com)     \033[0m "
 echo -e "\033[96;1m│\e[97m CITY            : $(cat /etc/xray/city)    \033[0m "
@@ -137,7 +137,7 @@ echo -e "\033[96;1m└───────────────────�
 
 function Service_Status() {
 echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
-echo -e "\033[96;1m|\e[0m\e[33m PROXY :\e[0m $status_haproxy  \e[0m|\e[33m NGINX :\e[0m $status_nginx  \e[0m|\e[33m XRAY :\e[0m $status_xray \e[0m| $status_dropbear  \e[96;1m  | \e[0m "
+echo -e "\033[96;1m|\e[0m PROXY :\e[0m $status_haproxy  \e[0m NGINX :\e[0m $status_nginx  \e[0m XRAY :\e[0m $status_xray \e[0m| $status_dropbear  \e[96;1m  | \e[0m "
 echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m "
 }
 
@@ -145,9 +145,9 @@ echo -e "\033[96;1m└───────────────────�
 
 function Details_Clients_Name() {
 echo -e "\033[96;1m   ┌───────────────────────────────────────────┐\033[0m "
-echo -e "\033[96;1m   │\e[97m  VERSION     :  ${BLUE}57.0      \033[0m "
-echo -e "\033[96;1m   │\e[97m  CLIENTS     :\033[0m\033[91;1m $(cat /usr/bin/user)      \033[0m "
-echo -e "\033[96;1m   │\e[97m  Expiry      :\033[0m\033[91;1m $masaaktif  \033[0m "
+echo -e "\033[96;1m   │\e[97m  VERSION     :  ${BLUE}4.0 LTS \033[0m "
+echo -e "\033[96;1m   │\e[97m  CLIENTS     :\033[0m\033[92;1m $(cat /usr/bin/user)   \033[0m "
+echo -e "\033[96;1m   │\e[97m  Expiry In   :\033[0m\033[92;1m $masaaktif  \033[0m "
 echo -e "\033[96;1m   └───────────────────────────────────────────┘\033[0m "
 }
 
@@ -155,11 +155,12 @@ echo -e "\033[96;1m   └──────────────────�
 
 function Acces_Use_Command() {
 echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
-echo -e "\033[96;1m│  \e[34m1.)\e[93m☞ \e[97m SSH/OPENVPN         \e[34m6.)\e[93m☞ \e[97m BOT TELEGRAM   \e[96;1m│\e[0m"   
-echo -e "\033[96;1m│  \e[34m2.)\e[93m☞ \e[97m XRAY MANAGER        \e[34m7.)\e[93m☞ \e[97m UPDATE SCRIPT  \e[96;1m│\e[0m"
-echo -e "\033[96;1m│  \e[34m3.)\e[93m☞ \e[97m XRAY TROJAN         \e[34m8.)\e[93m☞ \e[97m BACKUP RESTOR  \e[96;1m│\e[0m"
-echo -e "\033[96;1m│  \e[34m4.)\e[93m☞ \e[97m SLOWDNS             \e[34m9.)\e[93m☞ \e[97m FEATURES       \e[96;1m│\e[0m"
-echo -e "\033[96;1m│  \e[34m5.)\e[93m☞ \e[97m NOOBZVPNS          \e[34m10.)\e[93m☞ \e[97m EXIT           \e[96;1m│\e[0m"
+echo -e "\033[96;1m│  \e[34m1.)\e[93m☞ \e[97m SSH/OPENVPN         \e[34m7.)\e[93m☞ \e[97m BOT TELEGRAM   \e[96;1m│\e[0m"   
+echo -e "\033[96;1m│  \e[34m2.)\e[93m☞ \e[97m XRAY MANAGER        \e[34m8.)\e[93m☞ \e[97m UPDATE SCRIPT  \e[96;1m│\e[0m"
+echo -e "\033[96;1m│  \e[34m3.)\e[93m☞ \e[97m XRAY TROJAN         \e[34m9.)\e[93m☞ \e[97m BACKUP RESTOR  \e[96;1m│\e[0m"
+echo -e "\033[96;1m│  \e[34m4.)\e[93m☞ \e[97m SLOWDNS            \e[34m10.)\e[93m☞ \e[97m FEATURES       \e[96;1m│\e[0m"
+echo -e "\033[96;1m│  \e[34m5.)\e[93m☞ \e[97m NOOBZVPNS          \e[34m11.)\e[93m☞ \e[97m HOME WELCOME   \e[96;1m│\e[0m"
+echo -e "\033[96;1m│  \e[34m6.)\e[93m☞ \e[97m SS-R                \e[34mx.)\e[93m☞ \e[97m EXIT           \e[96;1m│\e[0m"
 echo -e "\033[96;1m└─────────────────────────────────────────────────┘\033[0m"
 }
 
@@ -173,13 +174,14 @@ case $hallo in
 2) clear ; m-xray ;; # menu vmess
 3) clear ; m-tro ;; # menu vles
 4) clear ; sd ;; # menu trojan
-5) clear ; m-noobz ;; # menu sadowsocks
-6) clear ; m-bot ;; # menu bot telegram
-7) clear ; wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && bash update.sh ;; #Update script
-8) clear ; m-bkp ;; # menu backup
-9) clear ; m-ftr ;; # menu managers
-10) exit ;;
-*) welcome ;; # Back To Home Welcome
+5) clear ; m-noobz ;; # menu nobz
+6) clear ; m-ssr ;; # menu sadowsocks
+7) clear ; m-bot ;; # menu bot telegram
+8) clear ; wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && bash update.sh ;; #Update script
+9) clear ; m-bkp ;; # menu backup
+10) clear ; m-ftr ;; # menu managers
+x) exit ;;
+11) welcome ;; # Back To Home Welcome
 esac
 }
 
