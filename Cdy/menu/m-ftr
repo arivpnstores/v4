@@ -46,7 +46,7 @@ function ATAS() {
 }
 
 function  FIXX() {
-  echo -e  " ${BG_BLU}               MENU FIXX              ${Xark}"
+  echo -e  " ${BG_BLU}               MENU FIXX               ${Xark}"
 }
 
 function  ADMIN() {
@@ -54,17 +54,17 @@ function  ADMIN() {
 }
 
 function  CLEAR() {
-  echo -e  " ${BG_BLU}               MENU CLEAR             ${Xark}"
+  echo -e  " ${BG_BLU}               MENU CLEAR              ${Xark}"
 }
 
 
 function  INFORMATION() {
-  echo -e  " ${BG_BLU}              INFORMATION             ${Xark}"
+  echo -e  " ${BG_BLU}              INFORMATION              ${Xark}"
 }
 
 
 function  OTHER() {
-  echo -e  " ${BG_BLU}                OTHER                 ${Xark}"
+  echo -e  " ${BG_BLU}                OTHER                  ${Xark}"
 }
 
 

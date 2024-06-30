@@ -208,8 +208,8 @@ echo -e "${z}   └────────────────────�
 
 function Details_Bw_Clients() {
 echo -e "${z}   ┌───────────────────────────────────────────┐\033[0m "
-echo -e "${z}   │${NC} KEMARIN  |  HARI INI  | BULANAN      \033[0m "
-echo -e "${z}   │${NC}\033[91;1m  ${bwkmrn1}       ${bwhari}      ${bwbln}\033[0m "
+echo -e "${z}   │${NC} KEMARIN   |   HARI INI   |   BULANAN     \033[0m "
+echo -e "${z}   │${NC}\033[91;1m ${bwkmrn1}    ${bwhari}    ${bwbln}\033[0m "
 echo -e "${z}   └───────────────────────────────────────────┘\033[0m "
 }
 
