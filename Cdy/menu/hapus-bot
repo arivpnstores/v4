@@ -14,13 +14,13 @@ BlueBe="\033[5;34m"
 nama=$(cat /etc/xray/username)
 # . Liner 
 function baris_panjang() {
-  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
 }
 
 function xdxl_Banner() {
 clear
 baris_panjang
-echo -e "${ungu}           $nama      ${Xark} "
+echo -e       "\033[0;35m                  ARISCTUNNEL V4                \033[0m"
 baris_panjang
 }
 

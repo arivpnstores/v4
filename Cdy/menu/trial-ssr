@@ -363,7 +363,7 @@ BlueCyan="\033[5;36m"
 WhiteBe="\033[5;37m"
 # . Liner 
 function baris_panjang() {
-  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
 }
 function Sc_Credit(){
 baris_panjang

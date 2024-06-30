@@ -51,7 +51,7 @@ nama=$(cat /etc/xray/username)
 clear
 # Getting
 function baris_panjang() {
-   echo -e "${BlueCyan} ———————————————————————————————————————————————${Xark}"
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
 }
 
 function xdxl_Banner() {

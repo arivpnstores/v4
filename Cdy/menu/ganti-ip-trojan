@@ -14,7 +14,7 @@ KUNING="\033[93;1m"
 nama=$(cat /etc/xray/username)
 # . Liner 
 function baris_panjang() {
-  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
 }
 
 function xdxl_Banner() {
