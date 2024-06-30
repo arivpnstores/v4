@@ -123,7 +123,7 @@ echo -e "\033[96;1m└───────────────────�
 
 function Service_System_Operating() {
 echo -e "\033[96;1m┌─────────────────────────────────────────────────┐\033[0m "
-echo -e "\033[96;1m│\e[97m SYSTEM          : $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g')     \033[0m "
+echo -e "\033[96;1m│\e[97m SYSTEM          : $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')     \033[0m "
 echo -e "\033[96;1m│\e[97m RAM             : $(free -m | awk 'NR==2 {print $2}') MB \033[0m "
 echo -e "\033[96;1m│\e[97m UPTIME          : $(uptime -p | cut -d " " -f 2-10)\033[0m "
 echo -e "\033[96;1m│\e[97m IP VPS          : $(curl -s ipv4.icanhazip.com)     \033[0m "
@@ -177,7 +177,7 @@ case $hallo in
 5) clear ; m-noobz ;; # menu noobz
 6) clear ; m-ssr ;; # menu sadowsocks
 7) clear ; m-bot ;; # menu bot telegram
-8) clear ; wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && bash update.sh ;; #Update script
+8) clear ; rm -rf update.sh && wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && bash update.sh ;; #Update script
 9) clear ; m-bkp ;; # menu backup
 10) clear ; m-ftr ;; # menu managers
 x) exit ;;
