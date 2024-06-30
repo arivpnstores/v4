@@ -72,7 +72,7 @@ echo -e "### $user $pass $exp" >> /etc/xray/noob
 clear
 
 echo -e "${GREEN}◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m${NC}"
-echo -e "${GREEN}| \E[44;1;39m      °NOOBZVPN'S ACCOUNT°            \E[0m|"
+echo -e "${GREEN}| \E[44;1;39m      °NOOBZVPN'S ACCOUNT°      \E[0m|"
 echo -e "${GREEN}◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m${NC}"
 echo ""
 echo -e "DOMAIN : $( cat /etc/xray/domain )"
@@ -116,7 +116,7 @@ TEXT="
 curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 echo ""
 echo -e "${GREEN}◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m${NC}"
-echo -e "${GREEN}| \E[44;1;39m          • $nama •            \E[0m|"
+echo -e "${GREEN}| \E[44;1;39m          • $nama •             \E[0m|"
 echo -e "${GREEN}◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m${NC}"
 read -n 1 -s -r -p "Press any key to back on menu"
 menu

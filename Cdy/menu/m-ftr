@@ -50,7 +50,7 @@ function  FIXX() {
 }
 
 function  ADMIN() {
-  echo -e  " ${BG_BLU}               ADMIN AKSES              ${Xark}"
+  echo -e  " ${BG_BLU}               ADMIN AKSES             ${Xark}"
 }
 
 function  CLEAR() {
