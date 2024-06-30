@@ -53,7 +53,7 @@ tnggl="$tgl2 $bln2, $thn2"
 noobzvpns --add-user $Login $Pass --expired-user $Login $hari
 
 function baris_panjang(){
-echo -e "${BlueCyan} —————————————————————————————————— ${Xark} "
+ echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
 }
 
 baris_panjang
@@ -153,7 +153,7 @@ BlueCyan='\e[5;36m'
 Xark='\e[0m'
 clear
 function baris_panjang(){
-echo -e "${BlueCyan} —————————————————————————————————— ${Xark} "
+ echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
 }
 # Sc Credit
 function Sc_Credit(){

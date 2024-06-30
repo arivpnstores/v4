@@ -367,9 +367,8 @@ function baris_panjang() {
 }
 function Sc_Credit(){
 baris_panjang
-echo -e "${ungu}  Terimakasih Telah Menggunakan ${Xark}"
-echo -e "${ungu}          Script Credit ${Xark}"
-echo -e "${ungu}        $nama ${Xark}"
+echo -e       "\033[0;35m          Terimakasih sudah menggunakan-       \033[0m"
+echo -e       "\033[0;35m         Script Credit By ARISCTUNNEL V4       \033[0m"
 baris_panjang
 exit 0
 }

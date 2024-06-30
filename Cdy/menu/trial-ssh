@@ -57,8 +57,7 @@ expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
 echo -e "$Pass\n$Pass\n"|passwd $Login &> /dev/null
 
 function baris_panjang(){
-echo -e "${BlueCyan} ◇━━━━━━━━━━━━━━━━━◇ ${Xark} "
-}
+ echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"}
 
 function xdxl_Banner() {
 clear
@@ -161,8 +160,7 @@ BlueCyan='\e[5;36m'
 Xark='\e[0m'
 clear
 function baris_panjang(){
-echo -e "${BlueCyan} ◇━━━━━━━━━━━━━━━━━◇ ${Xark} "
-}
+ echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"}
 # Sc Credit
 function Sc_Credit(){
 baris_panjang
