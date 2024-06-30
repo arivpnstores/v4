@@ -29,10 +29,10 @@ clear
 ######################################
 # // USERNAME IZIN IPP
 rm -f /usr/bin/user
-username=$(curl -sS https://raw.githubusercontent.com/Dekdoo12/izinsc/main/ip | grep $MYIP | awk '{print $2}')
+username=$(curl -sS https://raw.githubusercontent.com/arivpnstores/izin/main/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
 rm -f /usr/bin/e
-valid=$(curl -sS https://raw.githubusercontent.com/Dekdoo12/izinsc/main/ip | grep $MYIP | awk '{print $3}')
+valid=$(curl -sS https://raw.githubusercontent.com/arivpnstores/izin/main/ip | grep $MYIP | awk '{print $3}')
 echo "$valid" > /usr/bin/e
 
 clear
@@ -165,9 +165,9 @@ fi
 
 function rif_Banner() {
 clear
-echo -e "${z}┌─────────────────────────────────────────────────┐\033[0m "
-echo -e "${z}│${NC} \033[41;37m               TUNELING OFFICIAL               ${NC}${z} │${NC}"
-echo -e "${z}└─────────────────────────────────────────────────┘\033[0m "
+echo -e "\e[1;96m ┌─────────────────────────────────────────────────┐\e[0m"
+echo -e "\e[1;96m │ \e[41;1m                ARISCTUNNEL V4                 \e[0m \e[1;96m│\e[0m"
+echo -e "\e[1;96m └─────────────────────────────────────────────────┘\e[0m"
 }
 
 function Service_System_Operating() {
@@ -200,16 +200,16 @@ echo -e "${z}     └───────────────────�
 
 function Details_Clients_Name() {
 echo -e "${z}   ┌───────────────────────────────────────────┐\033[0m "
-echo -e "${z}   │${NC}  VERSION      :  ${BLUE}57.0 RIFKY      \033[0m "
-echo -e "${z}   │${NC}  CLIENTS      : \033[0m\033[91;1m $(cat /usr/bin/user)      \033[0m "
-echo -e "${z}   │${NC}  Expiry       : \033[0m\033[91;1m ${masaaktif} \033[0m "
+echo -e "${z}   │\e[97m  VERSION     :  ${BLUE}4.0 LTS \033[0m "
+echo -e "${z}   │\e[97m  CLIENTS     :\033[0m\033[92;1m $(cat /usr/bin/user)   \033[0m "
+echo -e "${z}   │\e[97m  Expiry In   :\033[0m\033[92;1m $masaaktif  \033[0m "
 echo -e "${z}   └───────────────────────────────────────────┘\033[0m "
 }
 
 function Details_Bw_Clients() {
 echo -e "${z}   ┌───────────────────────────────────────────┐\033[0m "
-echo -e "${z}   │${NC}\tKEMARIN   |\tHARI INI   |\tBULANAN   \033[0m "
-echo -e "${z}   │\033[0m\033[91;1m \t${bwkmrn1} \t${bwhari} \t${bwbln}\033[0m "
+echo -e "${z}   │${NC}\tKEMARIN  |\tHARI INI  |\tBULANAN   \033[0m "
+echo -e "${z}   │\033[0m\033[91;1m\t${bwkmrn1}\t${bwhari}\t${bwbln}\033[0m "
 echo -e "${z}   └───────────────────────────────────────────┘\033[0m "
 }
 
