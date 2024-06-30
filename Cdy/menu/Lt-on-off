@@ -34,7 +34,7 @@ checking_sc() {
     echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
     echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
     echo -e "             \033[0;33mContact Admin :\033[0m"
-    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/"
+    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/6281327393959"
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     exit
   fi

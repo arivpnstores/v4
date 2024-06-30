@@ -63,7 +63,7 @@ echo -e "${BlueCyan} ◇━━━━━━━━━━━━━━━━━◇ $
 function xdxl_Banner() {
 clear
 baris_panjang
-echo -e "\033[95;1m     $nama       \033[0m"
+echo -e       "${ungu}                  ARISCTUNNEL V3                ${Xark}"
 baris_panjang
 }
 

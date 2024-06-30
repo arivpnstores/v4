@@ -58,7 +58,7 @@ checking_sc() {
     echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
     echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
     echo -e "             \033[0;33mContact Admin :${NC}"
-    echo -e "      ${GREEN}WhatsApp${NC} wa.me/"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6281327393959"
     echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
     sleep 5
     reboot
@@ -86,7 +86,7 @@ function baris_panjang() {
 function xdxl_Banner() {
 clear
 baris_panjang
-echo -e "\033[95;1m     $nama       \033[0m"
+echo -e       "${ungu}                  ARISCTUNNEL V3                ${Xark}"
 baris_panjang
 }
 

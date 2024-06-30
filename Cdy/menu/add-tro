@@ -33,7 +33,7 @@ checking_sc() {
     echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
     echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
     echo -e "             \033[0;33mContact Admin :\033[0m"
-    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/"
+    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/6281327393959"
     echo -e "\033[0m────────────────────────────────────────────\033[0m"
     sleep 10
 	reboot
@@ -52,13 +52,13 @@ clear
 
 # . Liner 
 function baris_panjang() {
-  echo -e "\033[5;36m ◇━━━━━━━━━━━━━━━━━◇ \033[0m"
+   echo -e "${BlueCyan} ———————————————————————————————————————————————${Xark}"
 }
 
 function xdxl_Banner() {
 clear
 baris_panjang
-echo -e "\033[95;1m     $nama       \033[0m"
+echo -e       "${ungu}                  ARISCTUNNEL V3                ${Xark}"
 baris_panjang
 }
 
