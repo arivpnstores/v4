@@ -1,0 +1,188 @@
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+clear
+
+yellow="\033[0;33m"
+ungu="\033[0;35m"
+Red="\033[91;1m"
+Cyan="\033[96;1m"
+Xark="\033[0m"
+BlueCyan="\033[5;36m"
+WhiteBe="\033[5;37m"
+GreenBe="\033[5;32m"
+YellowBe="\033[5;33m"
+BlueBe="\033[5;34m"
+nama=$(cat /etc/xray/username)
+
+# . Liner 
+function send_log(){
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+TIME="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+<code>────────────────────
+<b>⚠️ NOTIFICATIONS UNLOCK XRAY ⚠️</b>
+────────────────────
+Username  : $user
+Expaired  : ${exp}
+Status    : UNLOCKED
+────────────────────</code>
+"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
+
+function cek_lock() {
+cekcek=$(cat /etc/xray/.lock.db)
+if [[ $cekcek == "" ]]; then
+cat >/etc/xray/.lock.db <<EOF
+#vmess
+#vless
+#trojan
+EOF
+else
+echo -ne
+fi
+}
+cek_lock
+function baris_panjang() {
+  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "${ungu}           $nama      ${Xark} "
+baris_panjang
+}
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "${ungu}  Terimakasih Telah Menggunakan ${Xark}"
+echo -e "${ungu}          Script Credit ${Xark}"
+echo -e "${ungu}          $nama ${Xark}"
+baris_panjang
+echo ""
+echo -e "{GREEN} Wait 3 Second For Back To Menu ${Xark}"
+sleep 3
+m-xray
+}
+
+duration=3
+frames=("██10%" "█████35%" "█████████65%" "█████████████80%" "█████████████████████90%" "█████████████████████████100%")
+
+# Menghitung jumlah frame
+num_frames=${#frames[@]}
+
+# Menghitung jumlah iterasi
+num_iterations=$((duration))
+
+# Fungsi untuk menampilkan animasi loading berwarna
+
+Loading_Animasi() {
+    for ((i = 0; i < num_iterations; i++)); do
+        clear
+        index=$((i % num_frames))
+        color_code=$((31 + i % 7))
+echo ""
+echo ""
+echo ""
+echo -e "\e[1;${color_code}m ${frames[$index]}\e[0m"
+sleep 0.5
+    done
+}
+
+# Menampilkan pesan Sukses setelah animasi selesai
+function Loading_Succes() {
+clear
+echo -e  "\033[5;32mSucces\033[0m"
+sleep 1
+clear
+}
+
+function Daftar_Account() {
+grep -E "^#& " "/etc/xray/.lock.db" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+}
+
+
+
+
+NUMBER_OF_CLIENTS=$(grep -c -E "^### " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+		baris_panjang
+        xdxl_Banner
+        baris_panjang
+		echo ""
+		echo -e "${Red} Name Is Wrong !!! ${Xark} "
+		echo ""
+	    baris_panjang
+	    Sc_Credit
+		read -n 1 -s -r -p "Press any key to back on menu"
+        menu
+	fi
+	clear
+	baris_panjang
+    echo -e "${ungu}           ACCOUNT VLESS LOCKED      ${Xark}"
+    baris_panjang
+    echo -e "${WhiteBe}  User       Expired  ${Xark}  " 
+	baris_panjang
+	Daftar_Account
+    echo ""
+    baris_panjang
+    echo ""
+    echo ""
+	read -rp " Input Username    : " user
+    if [ -z $user ]; then
+    exit
+    else
+    Loading_Animasi
+    Loading_Succes
+    uuid=$(grep -E "^#&" "/etc/xray/.lock.db" |  grep -wE "${user}" | cut -d " " -f 4)
+    exp=$(grep -E "^#&" "/etc/xray/.lock.db" |  grep -wE "${user}" | cut -d " " -f 3)
+	if [ -z $uuid ]; then
+	xdxl_Banner
+    baris_panjang
+    echo -e "${GreenBe} Akun Tidak Terkunci ${Xark} "
+    echo ""
+    echo -e "${yellow} Client Name : $user ${Xark}"
+    echo -e "${yellow} Expired On  : $exp  ${Xark}"
+    echo -e "${yellow} Status      : Akun Tidak Terkunci ${Xark}"
+    echo ""
+    baris_panjang
+	exit
+	else
+    sed -i '/#vless$/a\#& '"$user $exp"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+    sed -i '/#vlessgrpc$/a\#& '"$user $exp"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i "/^#& $user $exp $uuid/d" /etc/xray/.lock.db
+    systemctl restart xray > /dev/null 2>&1
+    clear
+    xdxl_Banner
+    baris_panjang
+    echo -e "${GreenBe} Successfully ${Xark} "
+    echo ""
+    echo -e "${yellow} Client Name : $user ${Xark}"
+    echo -e "${yellow} Expired On  : $exp  ${Xark}"
+        echo -e "${yellow} Status  : Unlocked  ${Xark}"
+    echo ""
+    baris_panjang
+    send_log
+    Sc_Credit
+    fi  
+	fi

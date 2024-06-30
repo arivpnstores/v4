@@ -1,0 +1,150 @@
+#!/bin/bash
+clear
+
+yellow="\033[0;33m"
+ungu="\033[0;35m"
+Red="\033[91;1m"
+Xark="\033[0m"
+BlueCyan="\033[5;36m"
+WhiteBe="\033[5;37m"
+GreenBe="\033[5;32m"
+YellowBe="\033[5;33m"
+BlueBe="\033[5;34m"
+nama=$(cat /etc/xray/username)
+
+# . Liner 
+function baris_panjang() {
+  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "${ungu}           $nama      ${Xark} "
+baris_panjang
+}
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "${ungu}  Terimakasih Telah Menggunakan ${Xark}"
+echo -e "${ungu}          Script Credit ${Xark}"
+echo -e "${ungu}          $nama ${Xark}"
+baris_panjang
+echo ""
+read -rp "press any key for back"
+m-xray
+}
+
+duration=3
+frames=("██10%" "█████35%" "█████████65%" "█████████████80%" "█████████████████████90%" "█████████████████████████100%")
+
+# Menghitung jumlah frame
+num_frames=${#frames[@]}
+
+# Menghitung jumlah iterasi
+num_iterations=$((duration))
+
+# Fungsi untuk menampilkan animasi loading berwarna
+
+Loading_Animasi() {
+    for ((i = 0; i < num_iterations; i++)); do
+        clear
+        index=$((i % num_frames))
+        color_code=$((31 + i % 7))
+echo ""
+echo ""
+echo ""
+echo -e "\e[1;${color_code}m ${frames[$index]}\e[0m"
+sleep 0.5
+    done
+}
+
+# Menjalankan animasi loading
+
+# Menampilkan pesan setelah animasi selesai
+function Loading_Succes() {
+clear
+echo -e  "\033[5;32mSucces\033[0m"
+sleep 2
+clear
+}
+
+
+function Daftar_Member_Vless() {
+    baris_panjang
+    echo ""
+  	grep -E "^#& " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq | lolcat
+    echo ""
+baris_panjang
+echo ""
+
+}
+
+function Cek_Config_Vless() {
+read -rp "Input Username : " user
+    if [ -z $user ]; then
+echo -e "User Tidak Ditemukan!!!"
+read -n 1 -s -r -p "Enter Back To Menu"
+m-xray
+else
+CITY=$(cat /etc/xray/city)
+ISP=$(cat /etc/xray/isp)
+domain=$(cat /etc/xray/domain)
+iplimit=$(cat /etc/kyt/limit/vless/ip/$user)
+Quota1=$(cat /etc/vless/$user)
+Quota=$((Quota1 / 1024 / 1024 / 1024))
+uuid=$(grep -E "^},{" "/etc/xray/config.json" |  grep -i '"'"${user}"'"' | cut -d " " -f 2 | cut -d '"' -f 2 | uniq )
+exp=$(grep -E "^#& " "/etc/xray/config.json" | grep -i ' '"${user}"' ' | cut -d ' ' -f 3 | uniq )
+
+vlesslink1="vless://${uuid}@${domain}:443?path=/vless&security=tls&encryption=none&type=ws#${user}"
+vlesslink2="vless://${uuid}@${domain}:80?path=/vless&encryption=none&type=ws#${user}"
+vlesslink3="vless://${uuid}@${domain}:443?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=${domain}#${user}"
+fi
+}
+function Details_Account() {
+baris_panjang
+echo -e "\033[37m VLESS XRAY \033[0m"
+baris_panjang
+echo -e ""
+echo -e "\033[37m Remarks     : ${user} "
+echo -e "\033[37m Domain      : ${domain}"
+echo -e "\033[37m User Quota  : ${Quota} GB"
+echo -e "\033[37m User Ip     : ${iplimit} IP"
+echo -e "\033[37m port TLS    : 443-900"
+echo -e "\033[37m port WS     : 80,8880,8080"
+echo -e "\033[37m User ID     : ${uuid}"
+echo -e "\033[37m Locations.  : $CITY"
+echo -e "\033[37m ISP         : $ISP"
+echo -e "\033[37m Encryption  : none"
+echo -e "\033[37m Path TLS    : /vless "
+echo -e "\033[37m ServiceName : vless-grpc"
+}
+
+function Link_Json() {
+baris_panjang
+echo -e "\033[37m Link TLS    : ${vlesslink1}"
+baris_panjang
+echo -e "\033[37m Link NTLS   : ${vlesslink2}"
+baris_panjang
+echo -e "\033[37m Link GRPC   : ${vlesslink3}"
+baris_panjang
+echo -e "\033[37m OpenClash   : https://${domain}:81/vless-$user.txt"
+}
+
+function Details_Expiry() {
+baris_panjang
+echo -e "\033[33m Expiry     : $exp \033[0m "
+}
+xdxl_Banner
+echo "     "
+Daftar_Member_Vless
+echo "     "
+Cek_Config_Vless
+clear
+Loading_Animasi
+Loading_Succes
+Details_Account
+Link_Json
+Details_Expiry
+Sc_Credit

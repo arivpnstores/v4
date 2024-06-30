@@ -1,0 +1,215 @@
+#!/bin/bash
+# Lt
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+BlueCyan='\e[5;36m'
+Xark='\e[0m'
+ungu='\033[35m'
+yellow='\e[33m'
+WhiteBe='\e[5;37m'
+GreenBe='\e[5;32m'
+BlueCyan='\e[5;36m'
+White="\033[97;1m"
+Green="\033[92;1m"
+Cyan="\033[96;1m"
+Xark='\e[0m'
+# ==========================================
+# // Get Bot
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
+# Getting
+MYIP=$(curl -sS ipv4.icanhazip.com);
+nama=$(cat /etc/xray/username)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain)
+
+function Lunatic_Banner() {
+clear
+baris_panjang
+echo -e "\033[95;1m     $nama       \033[0m"
+baris_panjang
+}
+
+function baris_panjang() {
+  echo -e "${BlueCyan} ———————————————————————————————————————${Xark}"
+}
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "${ungu}  Terimakasih Telah Menggunakan ${Xark}"
+echo -e "${ungu}          Script Credit ${Xark}"
+echo -e "${ungu}          $nama ${Xark}"
+baris_panjang
+}
+loading() {
+  local pid=$1
+  local delay=0.1
+  local spin='-\|/'
+
+  while ps -p $pid > /dev/null; do
+    local temp=${spin#?}
+    printf "[%c] " "$spin"
+    local spin=$temp${spin%"$temp"}
+    sleep $delay
+    printf "\b\b\b\b\b\b"
+  done
+
+  printf "    \b\b\b\b"
+}
+
+clear
+echo -e "\033[5;36m┌──────────────────────────────────────────┐\033[0m"
+echo "   USERNAME       EXP DATE         STATUS"
+echo -e "\033[5;36m└──────────────────────────────────────────┘\033[0m"
+echo -e "\033[5;36m┌──────────────────────────────────────────┐\033[0m"
+while read expired
+do
+AKUN="$(echo $expired | cut -d: -f1)"
+ID="$(echo $expired | grep -v nobody | cut -d: -f3)"
+exp="$(chage -l $AKUN | grep "Account expires" | awk -F": " '{print $2}')"
+status="$(passwd -S $AKUN | awk '{print $2}' )"
+if [[ $ID -ge 1000 ]]; then
+if [[ "$status" = "L" ]]; then
+ printf "%-17s %2s %-17s %2s \n" "  $AKUN" "$exp   " "LOCKED${NORMAL}"
+else
+ printf "%-17s %2s %-17s %2s \n" "  $AKUN" "$exp   " "UNLOCKED${NORMAL}"
+fi
+fi
+done < /etc/passwd
+echo -e "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" | lolcat
+echo -e " Masukan Username Account SSH"
+read -rp "Input Username : " user
+if [ -z $user ]; then
+echo -e "User Tidak Ditemukan!!!"
+read -n 1 -s -r -p "Enter Back To Menu"
+m-ssh
+else
+sleep 2 & loading $!
+echo -e "\033[0m"
+
+Login=$(cat /etc/ssh/.ssh.db | grep -wE $user | awk '{print $2}')
+Pass=$(cat /etc/ssh/.ssh.db | grep -wE $user | awk '{print $3}')
+Quota=$(cat /etc/ssh/.ssh.db | grep -wE $user | awk '{print $4}')
+iplimit=$(cat /etc/ssh/.ssh.db | grep -wE $user | awk '{print $5}')
+expe=$(cat /etc/ssh/.ssh.db | grep -wE $user | awk '{print $6" "$7" "$8}')
+
+PAYLOADWS="GET / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]"
+
+PAYLOADTLS="GET wss://$domain/ HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]"
+
+PAYLOADHANCED="HEAD / HTTP/1.1[crlf]Host: Masukan_Bug[crlf][crlf]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf][split]HTTP/ 1[crlf][crlf]"
+
+
+
+function Send_Log() {
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>SSH OVPN Account     </code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Username         : </code> <code>$Login</code>
+<code>Password         : </code> <code>$Pass</code>
+<code>Limit Quota      : </code> <code>$Quota</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>IP               : $IP</code>
+<code>Host             : </code> <code>$domain</code>
+<code>Port OpenSSH     : 443, 80, 22</code>
+<code>Port Dropbear    : 443, 109</code>
+<code>Port SSH WS      : 80, 8080, 8081-9999 </code>
+<code>Port SSH UDP     : 1-65535 </code>
+<code>Port SSH SSL WS  : 443</code>
+<code>Port SSL/TLS     : 400-900</code>
+<code>Port OVPN WS SSL : 443</code>
+<code>Port OVPN SSL    : 443</code>
+<code>Port OVPN TCP    : 443, 1194</code>
+<code>Port OVPN UDP    : 2200</code>
+<code>BadVPN UDP       : 7100, 7300, 7300</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>SSH WEBSOCKET    : </code><code>$domain:80@$Login:$Pass</code>
+<code>SSH SSL          : </code><code>$domain:443@$Login:$Pass</code>
+<code>SSH UDP          : </code><code>$domain:1-65535@$Login:$Pass</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Payload WSS      : </code><code>GET wss://BUG.COM/ HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: websocket[crlf][crlf]</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+OVPN Download : https://$domain:81/
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Save Link Account: </code>https://$domain:81/ssh-$Login.txt
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+Berakhir Pada        : $expe
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+"
+
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
+
+# Details ACcount
+function Details_Ssh(){
+Lunatic_Banner
+echo -e "  \033[37;1;7mSSH OPENVPN\033[0m"
+baris_panjang
+echo -e "\033[3;37m Remark      : $Login \033[0m"
+echo -e "\033[3;37m Password    : $Pass \033[0m"
+echo -e "\033[3;37m Limit Quota : $Quota \033[0m"
+echo -e "\033[3;37m Limit Ip    : ${iplimit} Devic \033[0m"
+echo -e "\033[3;37m Domain      : $domain \033[0m"
+echo -e "\033[3;37m ISP         : $ISP \033[0m "
+echo -e "\033[3;37m OpenSSH     : 443, 80, 22 \033[0m"
+echo -e "\033[3;37m Port UDP    : 1-65535 \033[0m"
+echo -e "\033[3;37m SSH WS      : 80,8080,8880,2082 \033[0m"
+echo -e "\033[3;37m SSL/TLS     : 443 \033[0m"
+echo -e "\033[3;37m OVPN UDP    : 2200 \033[0m"
+baris_panjang
+}
+
+
+
+function Copy_Faste(){
+echo -e "\033[3;37m Port 80     : $domain:80@$Login:$Pass \033[0m"
+echo -e "\033[3;37m Port 443    : $domain:443@$Login:$Pass \033[0m"
+echo -e "\033[3;37m Udp Custom  : $domain:1-65535@$Login:$Pass\033[0m"
+echo -e "\033[3;37m OpenVpn     : https://$domain:81/ "
+echo -e "\033[3;37m Account     : https://$domain:81/ssh-$Login.txt "
+}
+
+
+
+function Details_Payload(){
+baris_panjang
+echo -e "\033[3;37m Payload WS  : ${PAYLOADWS}\033[0m"
+baris_panjang
+echo -e "\033[3;37m Payload TLS : ${PAYLOADTLS}\033[0m"
+baris_panjang
+echo -e "\033[3;37m Payload ENCD: ${PAYLOADHANCED}\033[0m"
+baris_panjang
+}
+
+
+
+function Expiry_Details(){
+echo -e "\033[33m Expiry in  : $expe  \033[0m"
+}
+
+Lunatic_Banner
+Details_Ssh
+Copy_Faste
+Details_Payload
+Expiry_Details
+Send_Log
+Sc_Credit
+read -n 1 -s -r -p "Enter Back To Menu"
+m-ssh
+fi

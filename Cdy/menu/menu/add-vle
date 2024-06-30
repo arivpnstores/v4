@@ -1,0 +1,349 @@
+#!/bin/bash
+clear
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+clear
+#IZIN SCRIPT
+MYIP=$(curl -sS ipv4.icanhazip.com)
+echo -e "\e[32mloading...\e[0m"
+clear
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+
+# // Get Bot
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
+clear
+
+# Valid Script
+ipsaya=$(curl -sS ipv4.icanhazip.com)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            \033[91;1mPERMISSION DENIED !\033[0m"
+    echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
+    echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
+    echo -e "             \033[0;33mContact Admin :\033[0m"
+    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+	sleep 10
+    reboot
+  fi
+}
+checking_sc
+clear
+IP=$(curl -sS ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain)
+nama=$(cat /etc/xray/username)
+clear
+
+
+# . Liner 
+function baris_panjang() {
+  echo -e "\033[5;36m ◇━━━━━━━━━━━━━━━━━◇ \033[0m"
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "\033[95;1m     $nama       \033[0m"
+baris_panjang
+}
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "\033[2;35m      Terimakasih Telah Menggunakan \033[0m"
+echo -e "\033[2;35m             Script Credit \033[0m"
+echo -e "\033[2;35m           $nama  \033[0m"
+baris_panjang
+systemctl restart xray > /dev/null 2>&1
+service cron restart > /dev/null 2>&1
+exit 1
+}
+
+# // jalankan perintah :  sleep 3 & loading $!
+loading() {
+  local pid=$1
+  local delay=0.1
+  local spin='-\|/'
+
+  while ps -p $pid > /dev/null; do
+    local temp=${spin#?}
+    printf "[%c] " "$spin"
+    local spin=$temp${spin%"$temp"}
+    sleep $delay
+    printf "\b\b\b\b\b\b"
+  done
+
+  printf "    \b\b\b\b"
+}
+function BANNER() {
+clear
+baris_panjang
+echo -e "\033[95;1m     XRAY VLESS    \033[0m"
+baris_panjang
+}
+
+
+clear
+domain=$(cat /etc/xray/domain)
+clear
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
+xdxl_Banner
+BANNER
+  echo -e "\033[37m Just input a number for-\033[0m"
+  echo -e " \033[32mQuota Limit\033[0m"
+  echo -e " \033[32mLimit IP\033[0m"
+  echo -e "\033[37m Format GB \033[0m"
+echo ""
+  echo -e " \033[33m0\033[0m for Unlimited"
+  echo -e " \033[33m0\033[0m for No Limit"
+echo ""
+baris_panjang
+echo ""
+read -rp " Username         :  " -e user
+  CLIENT_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+
+  if [[ ${CLIENT_EXISTS} == '1' ]]; then
+    clear
+baris_panjang
+  echo -e "${Red}         Nickname Is wrong !! \033[0m "
+baris_panjang
+    echo ""
+    read -p "Press any key to back on menu"
+    menu
+  fi
+done
+uuid=$(cat /proc/sys/kernel/random/uuid)
+echo
+read -p " Limit User (GB)  : " Quota
+echo
+read -p " Limit User (IP)  : " iplimit
+echo
+read -p " Expired (days)   : " masaaktif
+
+sleep 3 & loading $!
+
+tgl=$(date -d "$masaaktif days" +"%d")
+bln=$(date -d "$masaaktif days" +"%b")
+thn=$(date -d "$masaaktif days" +"%Y")
+expe="$tgl $bln, $thn"
+tgl2=$(date +"%d")
+bln2=$(date +"%b")
+thn2=$(date +"%Y")
+tnggl="$tgl2 $bln2, $thn2"
+exp=$(date -d "$masaaktif days" +"%Y-%m-%d")
+sed -i '/#vless$/a\#& '"$user $exp"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vlessgrpc$/a\#& '"$user $exp"'\
+},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+
+vlesslink1="vless://${uuid}@${domain}:443?path=/vless&security=tls&encryption=none&type=ws#${user}"
+vlesslink2="vless://${uuid}@${domain}:80?path=/vless&encryption=none&type=ws#${user}"
+vlesslink3="vless://${uuid}@${domain}:443?mode=gun&security=tls&encryption=none&type=grpc&serviceName=vless-grpc&sni=${domain}#${user}"
+
+
+if [ ! -e /etc/vless ]; then
+  mkdir -p /etc/vless
+fi
+
+if [[ $iplimit -gt 0 ]]; then
+mkdir -p /etc/kyt/limit/vless/ip
+echo -e "$iplimit" > /etc/kyt/limit/vless/ip/$user
+else
+echo > /dev/null
+fi
+
+if [ -z ${Quota} ]; then
+  Quota="0"
+fi
+
+c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+d=$((${c} * 1024 * 1024 * 1024))
+
+if [[ ${c} != "0" ]]; then
+  echo "${d}" >/etc/vless/${user}
+fi
+DATADB=$(cat /etc/vless/.vless.db | grep "^###" | grep -w "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/vless/.vless.db
+  echo "### ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/vless/.vless.db
+else
+echo "### ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/vless/.vless.db
+fi
+clear
+cat >/var/www/html/vless-$user.txt <<-END
+
+======================
+$nama 
+======================
+# Format Vless WS TLS
+
+- name: Vless-$user-WS TLS
+  server: ${domain}
+  port: 443
+  type: vless
+  uuid: ${uuid}
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: ${domain}
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: ${domain}
+
+# Format Vless WS Non TLS
+
+- name: Vless-$user-WS (CDN) Non TLS
+  server: ${domain}
+  port: 80
+  type: vless
+  uuid: ${uuid}
+  cipher: auto
+  tls: false
+  skip-cert-verify: false
+  servername: ${domain}
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: ${domain}
+  udp: true
+
+# Format Vless gRPC (SNI)
+
+- name: Vless-$user-gRPC (SNI)
+  server: ${domain}
+  port: 443
+  type: vless
+  uuid: ${uuid}
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: ${domain}
+  network: grpc
+  grpc-opts:
+  grpc-mode: gun
+    grpc-service-name: vless-grpc
+
+======================
+Link Akun Vless 
+======================
+Link TLS      : 
+${vlesslink1}
+======================
+Link none TLS : 
+${vlesslink2}
+======================
+Link GRPC     : 
+${vlesslink3}
+======================
+Expired  : $masaaktif Day
+
+END
+
+clear
+CHATID="$CHATID"
+   KEY="$KEY"
+  TIME="10"
+   URL="https://api.telegram.org/bot$KEY/sendMessage"
+   TEXT="<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>      XRAY/VLESS</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Remarks   : ${user}
+Domain    : ${domain}
+Limit Quota : ${Quota} GB
+Port TLS  : 400-900
+Port NTLS : 80, 8080, 8081-9999
+id        : ${uuid}
+alterId   : 0
+Security  : auto
+network   : ws or grpc
+Path      : /Multi-Path
+Dynamic   : https://bugmu.com/path
+Name      : vless-grpc</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+Format OpenClash : https://${domain}:81/vless-$user.txt
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+Aktif Selama   : $masaaktif Hari
+Dibuat Pada    : $tnggl
+Berakhir Pada  : $expe
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+"
+
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="<code>◇━━━━━━━━━━━━━━━━━◇
+*_PEMBELIAN BERHASIL_*
+◇━━━━━━━━━━━━━━━━━◇
+-» PRODUK : VLESS
+-» REGION : $CITY
+-» REQ CONFIG : 
+-» REQ NAMA : $user
+-» DEVICE : $iplimit IP
+-» HARGA : 
+-» AKTIF : $masaaktif HARI
+-» TGL EXP : $expe
+◇━━━━━━━━━━━━━━━━━◇
+$nama </code>"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+
+
+clear
+xdxl_Banner
+function Details_Account() {
+echo -e "\033[37m VLESS XRAY \033[0m"
+baris_panjang
+echo -e "\033[37m Remarks     : ${user} "
+echo -e "\033[37m Domain      : ${domain}"
+echo -e "\033[37m User Quota  : ${Quota} GB"
+echo -e "\033[37m User Ip     : ${iplimit} IP"
+echo -e "\033[37m port TLS    : 443-900"
+echo -e "\033[37m port WS     : 80,8880,8080"
+echo -e "\033[37m User ID     : ${uuid}"
+echo -e "\033[37m Locations.  : $CITY"
+echo -e "\033[37m ISP         : $ISP"
+echo -e "\033[37m Encryption  : none"
+echo -e "\033[37m Path TLS    : /vless "
+echo -e "\033[37m ServiceName : vless-grpc"
+}
+
+function Link_Json() {
+baris_panjang
+echo -e "\033[37m Link TLS    : ${vlesslink1}"
+baris_panjang
+echo -e "\033[37m Link NTLS   : ${vlesslink2}"
+baris_panjang
+echo -e "\033[37m Link GRPC   : ${vlesslink3}"
+baris_panjang
+echo -e "\033[37m OpenClash   : https://${domain}:81/vless-$user.txt"
+}
+
+
+function Details_Expiry() {
+baris_panjang
+echo -e "\033[33m Days in    : $masaaktif Day \033[0m "
+echo -e "\033[33m Expiry     : $expe \033[0m "
+}
+xdxl_Banner
+Details_Account
+Link_Json
+Details_Expiry
+Sc_Credit

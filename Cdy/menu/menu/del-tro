@@ -1,0 +1,109 @@
+#!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+red='\e[1;31m'
+green='\e[0;32m'
+NC='\e[0m'
+
+
+BlueCyan="\033[5;36m"
+WhiteBe="\033[5;37m"
+yellow="\033[0;33m"
+ungu="\033[0;35m"
+Xark="\033[0m"
+BlueCyan="\033[5;36m"
+WhiteBe="\033[5;37m"
+GreenBe="\033[5;32m"
+nama=$(cat /etc/xray/username)
+# . Liner 
+function baris_panjang() {
+  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "${ungu}           $nama      ${Xark} "
+baris_panjang
+}
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "\033[2;35m      Terimakasih Telah Menggunakan \033[0m"
+echo -e "\033[2;35m             Script Credit \033[0m"
+echo -e "\033[2;35m           $nama  \033[0m"
+baris_panjang
+systemctl restart xray > /dev/null 2>&1
+service cron restart > /dev/null 2>&1
+exit 1
+}
+
+
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+clear
+
+
+NUMBER_OF_CLIENTS=$(grep -c -E "^#! " "/etc/xray/config.json")
+	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
+        baris_panjang
+		echo "Name $user is Wrong !!"
+		echo ""
+		echo -e "${yellow} Nama $user Ini Tidak ada- ${Xark} "
+		echo -e "${yellow} Mohon Pastikan Username Ada ${Xark}"
+        baris_panjang
+		read -p "Back To Menu"
+        menu
+	fi
+
+	clear
+	baris_panjang
+    echo -e "${yellow}          Delete Akun Trojan           ${Xark} "
+    
+    baris_panjang
+    echo -e "${yellow}  User       Expired   ${Xark}" 
+	baris_panjang
+	
+	grep -E "^#! " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+    echo ""
+    
+    baris_panjang
+	read -rp " Input Username    : " user
+    if [ -z $user ]; then
+
+Loading_Animasi
+Loading_Succes
+    menu
+    else
+    uuid=$(grep -E "###" "/etc/trojan/.trojan.db" |  grep -wE ${user} | awk '{print $4}' | uniq )
+    exp=$(grep -wE "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+    sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
+    echo "#! $user $uuid" >> /etc/xray/.userall.db
+	sed -i "/^### $user $exp/,/^},{/d" /etc/vless/.vless.db
+    rm -rf /etc/vless/$user
+    rm -rf /etc/kyt/limit/vless/ip
+	rm -rf /var/www/html/vless-$user.txt
+    systemctl restart xray > /dev/null 2>&1
+    clear
+    xdxl_Banner
+    baris_panjang
+    echo -e "${GreenBe} Successfully ${Xark} "
+    echo ""
+    echo -e "${yellow} Client Name : $user ${Xark}"
+    echo -e "${yellow} Expired On  : $exp  ${Xark}"
+    echo ""
+    baris_panjang
+    Sc_Credit
+    fi

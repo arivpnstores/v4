@@ -1,0 +1,201 @@
+#!/bin/bash
+clear
+
+yellow="\033[0;33m"
+ungu="\033[0;35m"
+Red="\033[91;1m"
+Xark="\033[0m"
+BlueCyan="\033[5;36m"
+WhiteBe="\033[5;37m"
+GreenBe="\033[5;32m"
+YellowBe="\033[5;33m"
+BlueBe="\033[5;34m"
+nama=$(cat /etc/xray/username)
+
+# . Liner 
+function baris_panjang() {
+  echo -e "${BlueCyan} ——————————————————————————————————— ${Xark} "
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "${ungu}           $nama      ${Xark} "
+baris_panjang
+}
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "${ungu}  Terimakasih Telah Menggunakan ${Xark}"
+echo -e "${ungu}          Script Credit ${Xark}"
+echo -e "${ungu}          $nama ${Xark}"
+baris_panjang
+echo ""
+read -rp "press any key for back"
+m-xray
+}
+
+duration=3
+frames=("██10%" "█████35%" "█████████65%" "█████████████80%" "█████████████████████90%" "█████████████████████████100%")
+
+# Menghitung jumlah frame
+num_frames=${#frames[@]}
+
+# Menghitung jumlah iterasi
+num_iterations=$((duration))
+
+# Fungsi untuk menampilkan animasi loading berwarna
+
+Loading_Animasi() {
+    for ((i = 0; i < num_iterations; i++)); do
+        clear
+        index=$((i % num_frames))
+        color_code=$((31 + i % 7))
+echo ""
+echo ""
+echo ""
+echo -e "\e[1;${color_code}m ${frames[$index]}\e[0m"
+sleep 0.5
+    done
+}
+
+# Menjalankan animasi loading
+
+# Menampilkan pesan setelah animasi selesai
+function Loading_Succes() {
+clear
+echo -e  "\033[5;32mSucces\033[0m"
+sleep 2
+clear
+}
+
+
+function Daftar_Member_Vmess() {
+    baris_panjang
+    echo ""
+  	grep -E "^### " "/etc/xray/config.json" | cut -d ' ' -f 2-3 | column -t | sort | uniq | lolcat
+    echo ""
+baris_panjang
+echo ""
+
+}
+function Cek_Config_Vmess() {
+	read -rp "Input Username : " user
+    if [ -z $user ]; then
+echo -e "User Tidak Ditemukan!!!"
+read -n 1 -s -r -p "Enter Back To Menu"
+m-xray
+else
+CITY=$(cat /etc/xray/city)
+ISP=$(cat /etc/xray/isp)
+domain=$(cat /etc/xray/domain)
+iplimit=$(cat /etc/kyt/limit/vmess/ip/$user)
+Quota1=$(cat /etc/vmess/$user)
+Quota=$((Quota1 / 1024 / 1024 / 1024))
+uuid=$(grep -E "^},{" "/etc/xray/config.json" |  grep -i '"'"${user}"'"' | cut -d " " -f 2 | cut -d '"' -f 2 | uniq )
+exp=$(grep -E "^### " "/etc/xray/config.json" | grep -i ' '"${user}"' ' | cut -d ' ' -f 3 | uniq )
+asu=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+ask=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "80",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "ws",
+      "path": "/vmess",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "none"
+}
+EOF`
+grpc=`cat<<EOF
+      {
+      "v": "2",
+      "ps": "${user}",
+      "add": "${domain}",
+      "port": "443",
+      "id": "${uuid}",
+      "aid": "0",
+      "net": "grpc",
+      "path": "vmess-grpc",
+      "type": "none",
+      "host": "${domain}",
+      "tls": "tls"
+}
+EOF`
+vmess_base641=$( base64 -w 0 <<< $vmess_json1)
+vmess_base642=$( base64 -w 0 <<< $vmess_json2)
+vmess_base643=$( base64 -w 0 <<< $vmess_json3)
+vmesslink1="vmess://$(echo $asu | base64 -w 0)"
+vmesslink2="vmess://$(echo $ask | base64 -w 0)"
+vmesslink3="vmess://$(echo $grpc | base64 -w 0)"
+fi
+}
+
+function Details_Account() {
+baris_panjang
+echo -e "\033[37m VMESS XRAY \033[0m"
+baris_panjang
+echo -e " Remarks       : ${user}"
+echo -e " Domain        : ${domain}"
+echo -e " User Quota    : ${Quota} GB"
+echo -e " User Ip       : ${iplimit} IP"
+echo -e " Port TLS      : 400,8443"
+echo -e " port WS       : 80,8880,8080,2082"
+echo -e " Key           : ${uuid}"
+echo -e " Localtions    : $CITY"
+echo -e " ISP           : $ISP"
+echo -e " AlterId       : 0"
+echo -e " Security      : auto"
+echo -e " Network       : ws"
+echo -e " Path          : /vmess"
+echo -e " Dynamic Path  : yourbug/vmess"
+echo -e " ServiceName   : vmess-grpc"
+echo -e "\033[0m"
+}
+
+
+function Link_Json() {
+baris_panjang
+echo -e " Link TLS      : ${vmesslink1}"
+baris_panjang
+echo -e " Link WS       : ${vmesslink2}"
+baris_panjang
+echo -e " Link GRPC     : ${vmesslink3}"
+baris_panjang
+echo -e " OpenClash     : https://${domain}:81/vmess-$user.txt"
+baris_panjang
+}
+
+function Details_Expiry() {
+echo -e "\033[33m Expiry        : $exp \033[0m"
+baris_panjang
+}
+xdxl_Banner
+echo "     "
+Daftar_Member_Vmess
+echo "     "
+Cek_Config_Vmess
+clear
+Loading_Animasi
+Loading_Succes
+Details_Account
+Link_Json
+Details_Expiry
+Sc_Credit

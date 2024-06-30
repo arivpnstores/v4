@@ -1,0 +1,32 @@
+#!/bin/bash
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+clear
+# ==========================================
+echo -e "${ORANGE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "                MEMBER SSH                   "
+echo -e "${ORANGE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "USERNAME          EXP DATE          "
+echo -e "${ORANGE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+noobzvpns --info-all-user
+echo -e "${ORANGE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "                DELETE SSH                   "
+echo -e "${ORANGE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo ""
+read -p "Ketik Usernamenya : " user
+
+        noobzvpns --remove-user $user > /dev/null 2>&1
+        exp=$(grep -w "^### $user" "/etc/ssh/.ssh.db" | cut -d ' ' -f 3 | sort | uniq)
+        sed -i "/^### $user $exp /,/^},{/d" /etc/ssh/.ssh.db
+        rm -f /etc/ssh/$user
+        rm -f /etc/kyt/limit/ssh/ip/${user}
+	    rm -f /var/www/html/ssh-$user.txt
+        echo -e "User $user Berhasil Di Hapus Sayang."

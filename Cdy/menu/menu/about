@@ -1,0 +1,3 @@
+#!/bin/bash
+clear
+figlet "Script By Tunneling Official" | lolcat

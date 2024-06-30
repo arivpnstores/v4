@@ -1,0 +1,60 @@
+#!/bin/bash
+######################################
+MYIP=$(curl -sS ipv4.icanhazip.com)
+######################################
+#IPVPS=$(curl -s ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain)
+#RAM=$(free -m | awk 'NR==2 {print $2}')
+#MODEL=$(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g')
+
+CHATID=""
+KEY=""
+TIME="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+clear
+# // Gettings Info
+######################################
+# // USERNAME IZIN IPP
+rm -f /usr/bin/user
+username=$(curl -sS https://raw.githubusercontent.com/Dekdoo12/izinsc/main/ip | grep $MYIP | awk '{print $2}')
+echo "$username" >/usr/bin/user
+rm -f /usr/bin/e
+valid=$(curl -sS https://raw.githubusercontent.com/Dekdoo12/izinsc/main/ip | grep $MYIP | awk '{print $3}')
+echo "$valid" > /usr/bin/e
+
+clear
+######################################
+# // DETAIL ORDER IZIN IP
+#username=$(cat /usr/bin/user)
+#oid=$(cat /usr/bin/ver)
+#exp=$(cat /usr/bin/e)
+######################################
+clear
+# // DAYS LEFT
+d1=$(date -d "$valid" +%s)
+d2=$(date -d "$today" +%s)
+certifacate=$(((d1 - d2) / 86400))
+if [[ $certifacate -le 1 ]]; then
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="◇━━━━━━━━━━━━━━◇
+<b>   ⚠️SC EXPAIRED NOTIF⚠️</b>
+<b>     Detail VPS Exp</b>
+◇━━━━━━━━━━━━━━◇
+<b>IP VPS  :</b> ${MYIP} 
+<b>DOMAIN  :</b> ${domain}
+<b>ISP     :</b> ${ISP}
+<b>CITY    :</b> ${CITY}
+<b>USER    :</b> ${username}
+<b>MASA    :</b> $certifacate DAY
+◇━━━━━━━━━━━━━━◇
+Silahkan Perpannjang VPS Anda
+"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+else
+echo -ne
+fi
