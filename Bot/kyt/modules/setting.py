@@ -230,17 +230,14 @@ async def speedtest(event):
 
 @bot.on(events.CallbackQuery(data=b'backup'))
 async def backup(event):
-	async def backup_(event):
-		async with bot.conversation(chat) as user:
-			user = user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
-			user = (await user).raw_text
-		cmd = f'printf "%s\n" "{user}" | backup'
-		try:
-			a = subprocess.check_output(cmd, shell=True).decode("utf-8")
-		except:
-			await event.respond("**Not Exist**")
-		else:
-			msg = f"""
+    async def backup_(event):
+        cmd = 'backup'
+        try:
+            a = subprocess.check_output(cmd, shell=True).decode("utf-8")
+        except:
+            await event.respond("**Not Exist**")
+        else:
+            msg = f"""
 ```
 {a}
 ```
@@ -261,13 +258,13 @@ async def restore(event):
         async with bot.conversation(chat) as user:
             await event.respond('**File ID :**')
             user1 = await user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
-            link1 = user1.raw_text
+            user1 = (await user).raw_text
             
             await event.respond('**File PATH :**')
             user2 = await user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
-            link2 = user2.raw_text
+            user2 = (await user).raw_text
             
-        cmd = f'printf "%s\n%s\n" "{link1}" "{link2}" | restore'
+        cmd = f'printf "%s\n%s\n" "{user1}" "{user2}" | restore'
         try:
             a = subprocess.check_output(cmd, shell=True).decode("utf-8")
         except:
