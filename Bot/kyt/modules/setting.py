@@ -227,20 +227,22 @@ async def speedtest(event):
 	else:
 		await event.answer("Access Denied",alert=True)
 
-
 @bot.on(events.CallbackQuery(data=b'backup'))
 async def backup(event):
-    async def backup_(event):
-        cmd = 'backup'
-        try:
-            a = subprocess.check_output(cmd, shell=True).decode("utf-8")
-        except:
-            await event.respond("**Not Exist**")
-        else:
-            msg = f"""
-```
+	async def backup_(event):
+		async with bot.conversation(chat) as user:
+			await event.respond('**Password :**')
+			user = user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
+			user = (await user).raw_text
+		cmd = f'printf "%s\n" "{user}" | backup'
+		try:
+			a = subprocess.check_output(cmd, shell=True).decode("utf-8")
+		except:
+			await event.respond("**Not Exist**")
+		else:
+			msg = f"""
 {a}
-```
+
 **» 🤖@ARI_VPN_STORE**
 """
 			await event.respond(msg)
@@ -251,6 +253,7 @@ async def backup(event):
 		await backup_(event)
 	else:
 		await event.answer("Akses Ditolak",alert=True)
+
 
 @bot.on(events.CallbackQuery(data=b'restore'))
 async def restore(event):
