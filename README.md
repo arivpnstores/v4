@@ -1,9 +1,3 @@
-### INSTALL SCRIPT 
-<pre><code>CHAT ADMIN</code></pre>
-
-### PERINTAH UPDATE 
-<pre><code>if [[ ! -d /etc/xdtmp ]]; then mkdir -p /etc/xdtmp; fi && wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
-
 ### TESTED ON OS 
 - UBUNTU 20.04.05
 - DEBIAN 10
