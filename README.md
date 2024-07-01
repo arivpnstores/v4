@@ -1,6 +1,5 @@
 ### INSTALL SCRIPT 
-<pre><code>apt-get update -y && apt install curl wget bzip2 gzip xz-utils screen && if [[ ! -d /etc/xdtmp ]]; then mkdir -p /etc/xdtmp; fi && wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/v4.sh && chmod +x v4.sh && screen -S install ./v4.sh
-</code></pre>
+<pre><code>CHAT ADMIN</code></pre>
 
 ### PERINTAH UPDATE 
 <pre><code>if [[ ! -d /etc/xdtmp ]]; then mkdir -p /etc/xdtmp; fi && wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
