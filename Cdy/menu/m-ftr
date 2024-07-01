@@ -139,7 +139,7 @@ case $NB in
 5) clear ; speedtest ;;
 6) clear ; xp ;;
 7) clear ; Factreset ;;
-8) clear ; wget -q https://raw.githubusercontent.com/Dekdoo12/autoscript/main/Fls/nameserver && chmod +x nameserver && ./nameserver && reset ;;
+8) clear ; wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/Fls/nameserver && chmod +x nameserver && ./nameserver && reset ;;
 9) clear ; nano /etc/banner.txt ;;
 10) clear ; change-domain ;;
 11) clear ; fixhap ;;

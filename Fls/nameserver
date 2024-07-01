@@ -1,5 +1,5 @@
 #!/bin/sh
-REPOS="https://raw.githubusercontent.com/Dekdoo12/autoscript/main/"
+REPOS="https://raw.githubusercontent.com/arivpnstores/v4/main/"
 ns_domain_cloudflare() {
 	DOMAIN="xdg-boost.my.id"
 	DOMAIN_PATH=$(cat /etc/xray/domain)

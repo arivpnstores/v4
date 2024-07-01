@@ -58,7 +58,7 @@ clear
 
 
 
-REPO="https://raw.githubusercontent.com/Dekdoo12/autoscript/main/Cfg/"
+REPO="https://raw.githubusercontent.com/arivpnstores/v4/main/Cfg/"
 # fixhap fix Haproxy
 clear
 echo -e "${BlueCyan} ------------------------- ${Xark} "

@@ -8,7 +8,7 @@ FONT="\033[0m"
 GREENBG="\033[42;37m"
 REDBG="\033[41;37m"
 NC='\e[0m'
-REPOS="https://raw.githubusercontent.com/Dekdoo12/autoscript/main/"
+REPOS="https://raw.githubusercontent.com/arivpnstores/v4/main/"
 ns_domain_cloudflare() {
 	DOMAIN="xdg-boost.my.id"
 	DOMAIN_PATH=$(cat /etc/xray/domain)
