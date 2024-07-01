@@ -1,0 +1,155 @@
+#!/bin/bash
+
+DF='\e[39m'
+RED='\033[0;31m'
+Bold='\e[1m'
+Blink='\e[5m'
+yell='\e[33m'
+red='\e[31m'
+green='\e[32m'
+g="\e[92;1m"
+blue='\e[34m'
+PURPLE='\e[35m'
+cyan='\e[36m'
+r='\e[91m'
+Lyellow='\e[93m'
+Lgreen='\e[92m'
+NC='\e[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+LIGHT='\033[0;37m'
+grenbo="\e[92;1m"
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+# Getting
+
+# // STATUS SERVICE BOT
+bot_service=$(systemctl status kyt | grep active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+if [[ $bot_service == "running" ]]; then 
+   sts_bot="${g}[ON]${NC}"
+else
+   sts_bot="${r}[OFF]${NC}"
+fi
+#####
+KIRI="\033[1;32m>\033[1;33m>\033[1;31m>\033[1;31m$NC"
+ipsaya=$(curl -sS ipv4.icanhazip.com)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+   echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            ${RED}PERMISSION DENIED !${NC}"
+    echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
+    echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
+    echo -e "             \033[0;33mContact Admin :${NC}"
+    echo -e "      ${GREEN}WhatsApp${NC} wa.me/6281327393959"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    sleep 5
+    reboot
+  fi
+}
+checking_sc
+
+yellow="\033[0;33m"
+ungu="\033[0;35m"
+Red="\033[91;1m"
+Xark="\033[0m"
+BlueCyan="\033[5;36m"
+Cyan="\033[96;1m"
+Purple="\033[95;1m"
+Green="\033[92;1m"
+WhiteBe="\033[5;37m"
+GreenBe="\033[5;32m"
+YellowBe="\033[5;33m"
+BlueBe="\033[5;34m"
+nama=$(cat /etc/xray/username)
+# . Liner 
+function baris_panjang() {
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e       "\033[0;35m                  ARISCTUNNEL V4                \033[0m"
+baris_panjang
+}
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "${ungu}     Terimakasih Telah Menggunakan ${Xark}"
+echo -e "${ungu}             Script Credit ${Xark}"
+echo -e "${ungu}           $nama ${Xark}"
+baris_panjang
+exit 1
+}
+
+duration=3
+frames=("██10%" "█████35%" "█████████65%" "█████████████80%" "█████████████████████90%" "█████████████████████████100%")
+
+# Menghitung jumlah frame
+num_frames=${#frames[@]}
+
+# Menghitung jumlah iterasi
+num_iterations=$((duration))
+
+# Fungsi untuk menampilkan animasi loading berwarna
+
+Loading_Animasi() {
+    for ((i = 0; i < num_iterations; i++)); do
+        clear
+        index=$((i % num_frames))
+        color_code=$((31 + i % 7))
+echo ""
+echo ""
+echo ""
+echo -e "\e[1;${color_code}m ${frames[$index]}\e[0m"
+sleep 0.5
+    done
+}
+
+# Menjalankan animasi loading
+
+# Menampilkan pesan setelah animasi selesai
+function Loading_Succes() {
+clear
+echo -e  "\033[5;32mSucces\033[0m"
+sleep 1
+clear
+}
+
+MYIP=$(wget -qO- ipinfo.io/ip);
+clear
+xdxl_Banner
+baris_panjang
+echo -e "${ungu}         • MENU BOT PANEL •         ${Xark}"
+baris_panjang
+echo -e ""
+echo -e " ${KIRI} Status Bot ( ${sts_bot} )"
+echo -e "${Green}"
+echo -e " 1. Create Bot"
+echo -e " 2. Delete Bot"
+echo -e " 3. Stop Bot "
+echo -e " 4. Restart Bot"
+echo -e " 5. Auto Backup Bot"
+echo -e " x. EXIT"
+echo -e "${Xark}"
+baris_panjang
+echo -e ""
+read -p " Select menu :  "  opt
+echo -e   ""
+case $opt in
+01 | 1) clear ; wget -q https://raw.githubusercontent.com/Dekdoo12/autoscript/main/Bot/kyt.sh && chmod +x kyt.sh && ./kyt.sh ;;
+02 | 2) clear ; hapus-bot ;;
+03 | 3) clear ; stop-bot ;;
+04 | 4) clear ; restart-bot ;;
+05 | 5) clear ; autobackup ;;
+*) clear ; menu ;;
+esac

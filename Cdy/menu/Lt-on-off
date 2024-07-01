@@ -1,0 +1,209 @@
+#!/bin/bash
+
+clear
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+clear
+#IZIN SCRIPT
+MYIP=$(curl -sS ipv4.icanhazip.com)
+echo -e "\e[32mloading...\e[0m"
+clear
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+
+# // Get Bot
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
+clear
+
+# Valid Script
+ipsaya=$(curl -sS ipv4.icanhazip.com)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            \033[91;1mPERMISSION DENIED !\033[0m"
+    echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
+    echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
+    echo -e "             \033[0;33mContact Admin :\033[0m"
+    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/6281327393959"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    exit
+  fi
+}
+checking_sc
+clear
+export TIME="10"
+IP=$(curl -sS ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain)
+nama=$(cat /etc/xray/username)
+clear
+
+
+# . Liner 
+function baris_panjang() {
+  echo -e "\033[5;36m ———————————————————————————————————————\033[0m"
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "\033[95;1m           $nama       \033[0m"
+baris_panjang
+}
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "\033[2;35m      Terimakasih Telah Menggunakan \033[0m"
+echo -e "\033[2;35m             Script Credit \033[0m"
+echo -e "\033[2;35m           $nama  \033[0m"
+baris_panjang
+exit 1
+}
+
+# // jalankan perintah :  sleep 3 & loading $!
+loading() {
+  local pid=$1
+  local delay=0.1
+  local spin='-\|/'
+
+  while ps -p $pid > /dev/null; do
+    local temp=${spin#?}
+    printf "[%c] " "$spin"
+    local spin=$temp${spin%"$temp"}
+    sleep $delay
+    printf "\b\b\b\b\b\b"
+  done
+
+  printf "    \b\b\b\b"
+}
+
+
+
+g="\e[92;1m"
+RED="\033[31m"
+NC='\033[0m'
+y='\033[1;93m'
+
+LIMITSSH_SCRIPT="/usr/local/sbin/limitssh-ip"
+CRON_FILE="/etc/cron.d/limitssh-ip"
+
+check_cron_status() {
+    if [ -e "$CRON_FILE" ]; then
+        echo -e "\033[33m Status Limit IP : ${g}[ON]${NC}"
+    else
+        echo -e "\033[33m Status Limit IP : ${RED}[OFF]${NC}"
+    fi
+}
+
+start_cron() {
+clear
+    # Input menit dari pengguna
+baris_panjang
+echo -e "\033[37m Just input a number in- \033[0m" 
+echo -e "\033[33m Limit ip ssh \033[0m"
+echo -e "\033[37m Format minutes \033[0m"
+echo 
+echo -e "\033[31m Example : \033[0m"
+echo
+echo -e "\033[32m 1   =   1 minutes \033[0m"
+echo -e "\033[32m 2   =   2 minutes \033[0m"
+echo
+baris_panjang
+echo
+echo
+    read -p "input minutes autokill (1-59): " menit
+sleep 3 & loading $!
+
+    # Validasi input
+    if [[ ! "$menit" =~ ^[1-9]$|^[1-5][0-9]$ ]]; then
+        echo -e "${RED}Input tidak valid.${NC}"
+        return
+    fi
+
+    # Membuat isi tugas cron
+    CRON_ENTRY="*/$menit * * * * root $LIMITSSH_SCRIPT"
+
+    # Menambahkan atau memperbarui tugas cron
+    echo -e "SHELL=/bin/sh\nPATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin\n$CRON_ENTRY" | tee "$CRON_FILE" > /dev/null
+
+    # Pastikan izin file dan tugas cron
+    chmod +x "$LIMITSSH_SCRIPT"
+    chmod 644 "$CRON_FILE"
+
+    # Menampilkan isi dari /etc/cron.d/limitssh-ip
+    echo -e "Isi dari $CRON_FILE:"
+    cat "$CRON_FILE"
+    
+clear
+xdxl_Banner
+baris_panjang
+echo
+echo -e "\e[32m succesfully \033[0m"
+echo
+check_cron_status
+echo -e "\033[33m Auto Shutdown   : $menit minutes\033[0m"
+echo
+baris_panjang
+Sc_Credit
+read -p "Enter Back To Menu"
+Lt-on-off
+}
+
+stop_cron() {
+    rm -f "$CRON_FILE"
+    xdxl_Banner
+    baris_panjang
+    echo
+    echo -e "\033[32m succesfully \033[0m"
+    echo
+    echo -e " Status  : ${RED}NonActive${NC}"
+    echo
+    baris_panjang
+    Sc_Credit
+}
+
+
+
+function Environment(){
+clear
+xdxl_Banner
+baris_panjang
+check_cron_status
+baris_panjang
+echo
+echo -e "\033[35m 1.  Start Limit Ip ssh \033[0m"
+echo -e "\033[35m 2.  Stopp Limit Ip ssh \033[0m"
+echo -e "\033[35m 3.  Check Status Limit\033[0m"
+echo -e "\033[31m x.  EXIT \033[0m"
+echo
+baris_panjang
+echo
+}
+Environment
+read -p "Select From Options [1/3 or x] :  " REPLY
+    case $REPLY in
+        1)
+            start_cron
+            ;;
+        2)
+            stop_cron
+            ;;
+        3)
+            check_cron_status
+            ;;
+        *)
+            exit
+            ;;
+    esac

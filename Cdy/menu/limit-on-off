@@ -1,0 +1,123 @@
+#!/bin/bash
+#Color
+DF='\e[39m'
+Bold='\e[1m'
+Blink='\e[5m'
+yell='\e[33m'
+RED='\033[0;31m'
+green='\e[32m'
+PURPLE='\e[35m'
+cyan='\e[36m'
+LRED='\e[91m'
+Lgreen='\e[92m'
+Lyellow='\e[93m'
+NC='\e[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+LIGHT='\033[0;37m'
+grenbo="\e[92;1m"
+blue="\033[0;34m"
+WhiteBe="\033[5;37m"
+Blue="\033[36m"
+clear
+
+echo -e "\e[32mloading...\e[0m"
+clear
+
+limitip=$(systemctl status vmip | grep running | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+limitquota=$(systemctl status limitvmess | grep running | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+# STATUS SERVICE
+if [[ $limitip == "running" ]]; then 
+   status_limip="${GREEN}ON$NC${blue} │$NC"
+else
+   status_limip="${RED}OFF${NC} "
+fi
+
+# Status 
+if [[ $limitquota == "running" ]]; then 
+   status_limq="${GREEN}ON$NC${blue} │$NC"
+else
+   status_limq="${RED}OFF${NC} "
+fi
+
+echo -e "\033[5;36m┌──────────────────────────────────────────┐\033[0m"
+echo -e "       Status limit ip      : $status_limip"
+echo -e "       Status limit quota   : $status_limq"
+echo -e "\033[5;36m└──────────────────────────────────────────┘\033[0m"
+echo -e "\033[5;36m┌──────────────────────────────────────────┐\033[0m"
+echo -e " ${WhiteBe}1. TURN OFF LIMIT IP VIA LOCK${NC}"
+echo -e " ${WhiteBe}2. TURN ON  LIMIT IP VIA LOCK${NC}"
+echo -e " ${WhiteBe}3. TURN OFF LIMIT QUOTA VIA LOCK${NC}"
+echo -e " ${WhiteBe}4. TURN ON  LIMIT QUOTA VIA LOCK${NC}"
+echo -e " ${WhiteBe}x. Back To Main Menu ${NC}"
+echo -e "\033[5;36m└──────────────────────────────────────────┘\033[0m"
+
+# Fungsi untuk
+start_limip() {
+clear
+    systemctl enable vmip
+	systemctl enable vlip
+	systemctl enable trip
+	systemctl start vmip
+	systemctl start vlip
+	systemctl start trip
+clear
+    echo -e "Limit IP Xray ${GREEN}Diaktifkan${NC}."
+	sleep 2
+	limit-on-off
+}
+
+stop_limip() {
+clear
+    systemctl disable vmip
+	systemctl disable vlip
+	systemctl disable trip
+	systemctl stop vmip
+	systemctl stop vlip
+	systemctl stop trip
+clear
+    echo -e "Limit IP Xray ${RED}Dinonaktifkan${NC}."
+	sleep 2
+	limit-on-off
+}
+
+start_limq() {
+clear
+    systemctl enable limitvmess
+	systemctl enable limitvless
+	systemctl enable limittrojan
+	systemctl start limitvless
+	systemctl start limitvless
+	systemctl start limittrojan
+clear
+    echo -e "Limit IP Xray ${GREEN}Diaktifkan${NC}."
+	sleep 2
+	limit-on-off
+}
+
+stop_limq() {
+clear
+    systemctl disable limitvmess
+	systemctl disable limitvless
+	systemctl disable limittrojan
+	systemctl stop limitvmess
+	systemctl stop limitvless
+	systemctl stop limittrojan
+clear
+    echo -e "Limit IP Xray ${RED}Dinonaktifkan${NC}."
+	sleep 2
+	limit-on-off
+}
+
+# Pilihan fungsi
+read -p "Select From Options [ 0 - 5 ] : " menu
+case $menu in
+    1) stop_limip ;;
+    2) start_limip ;;
+    3) stop_limq ;;
+    4) start_limq ;;
+    *)
+        clear ;
+        menu
+        ;;
+esac

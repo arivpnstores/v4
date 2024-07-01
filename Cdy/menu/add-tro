@@ -1,0 +1,316 @@
+#!/bin/bash
+clear
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+clear
+#IZIN SCRIPT
+MYIP=$(curl -sS ipv4.icanhazip.com)
+echo -e "\e[32mloading...\e[0m"
+clear
+red() { echo -e "\\033[32;1m${*}\\033[0m"; }
+
+# // Get Bot
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
+clear
+
+# Valid Script
+ipsaya=$(curl -sS ipv4.icanhazip.com)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            \033[91;1mPERMISSION DENIED !\033[0m"
+    echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
+    echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
+    echo -e "             \033[0;33mContact Admin :\033[0m"
+    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/6281327393959"
+    echo -e "\033[0m────────────────────────────────────────────\033[0m"
+    sleep 10
+	reboot
+  fi
+}
+checking_sc
+clear
+export TIME="10"
+IP=$(curl -sS ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain)
+nama=$(cat /etc/xray/username)
+clear
+
+
+# . Liner 
+function baris_panjang() {
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e       "\033[0;35m                  ARISCTUNNEL V4                \033[0m"
+baris_panjang
+}
+
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e       "\033[0;35m          Terimakasih sudah menggunakan-       \033[0m"
+echo -e       "\033[0;35m         Script Credit By ARISCTUNNEL V4       \033[0m"
+baris_panjang
+exit 1
+}
+
+# // jalankan perintah :  sleep 3 & loading $!
+loading() {
+  local pid=$1
+  local delay=0.1
+  local spin='-\|/'
+
+  while ps -p $pid > /dev/null; do
+    local temp=${spin#?}
+    printf "[%c] " "$spin"
+    local spin=$temp${spin%"$temp"}
+    sleep $delay
+    printf "\b\b\b\b\b\b"
+  done
+
+  printf "    \b\b\b\b"
+}
+
+#tr="$(cat ~/log-install.txt | grep -w "Trojan WS " | cut -d: -f2|sed 's/ //g')"
+until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
+xdxl_Banner
+baris_panjang
+  echo -e " Just input a number for-"
+  echo -e " ${Green}Quota Limit\033[0m"
+  echo -e " ${Green}Limit IP\033[0m"
+  echo -e " Format GB"
+echo ""
+  echo -e " \033[33m0\033[0m for Unlimited"
+  echo -e " \033[33m0\033[0m for No Limit"
+echo ""
+baris_panjang
+echo ""
+read -rp " Username         : " -e user
+		user_EXISTS=$(grep -w $user /etc/xray/config.json | wc -l)
+
+		if [[ ${user_EXISTS} == '1' ]]; then
+clear
+baris_panjang
+			echo ""
+			echo -e "${{Red} Sorry Nickname is Ready ! \033[0m "
+			echo ""
+			read -p "Press any key to back on menu"
+			m-tro
+		fi
+	done
+
+uuid=$(cat /proc/sys/kernel/random/uuid)
+echo
+read -p " Limit User (GB)  : " Quota
+echo
+read -p " Limit User (IP)  : " iplimit
+echo
+read -p " Expired (days)   : " masaaktif
+
+sleep 3 & loading $!
+
+tgl=$(date -d "$masaaktif days" +"%d")
+bln=$(date -d "$masaaktif days" +"%b")
+thn=$(date -d "$masaaktif days" +"%Y")
+expe="$tgl $bln, $thn"
+tgl2=$(date +"%d")
+bln2=$(date +"%b")
+thn2=$(date +"%Y")
+tnggl="$tgl2 $bln2, $thn2"
+exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
+sed -i '/#trojanws$/a\#! '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+
+# Link Trojan Akun
+systemctl restart xray
+trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=bug.com#${user}"
+trojanlink="trojan://${uuid}@bugkamu.com:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+trojanlink2="trojan://${uuid}@${domain}:80?path=%2Ftrojan-ws&security=none&host=${domain}&type=ws#${user}"
+
+cat >/var/www/html/trojan-$user.txt <<-END
+======================
+
+# Format Trojan GO/WS
+
+- name: Trojan-$user-GO/WS
+  server: ${domain}
+  port: 443
+  type: trojan
+  password: ${uuid}
+  network: ws
+  sni: ${domain}
+  skip-cert-verify: true
+  udp: true
+  ws-opts:
+    path: /trojan-ws
+    headers:
+        Host: ${domain}
+
+# Format Trojan gRPC
+
+- name: Trojan-$user-gRPC
+  type: trojan
+  server: ${domain}
+  port: 443
+  password: ${uuid}
+  udp: true
+  sni: ${domain}
+  skip-cert-verify: true
+  network: grpc
+  grpc-opts:
+    grpc-service-name: trojan-grpc
+	
+FORMAT LINK
+======================
+Link Akun Trojan 
+======================
+Link WS          : 
+${trojanlink}
+======================
+Link GRPC        : 
+${trojanlink1}
+======================
+Days in  : $masaaktif Day
+Expired  : $expe
+END
+
+trojanlink="trojan://${uuid}@${domain}:443?path=%2Ftrojan-ws&security=tls&host=${domain}&type=ws&sni=${domain}#${user}"
+trojanlink1="trojan://${uuid}@${domain}:443?mode=gun&security=tls&type=grpc&serviceName=trojan-grpc&sni=${domain}#${user}"
+if [ ! -e /etc/trojan ]; then
+  mkdir -p /etc/trojan
+fi
+
+if [[ $iplimit -gt 0 ]]; then
+mkdir -p /etc/kyt/limit/trojan/ip
+echo -e "$iplimit" > /etc/kyt/limit/trojan/ip/$user
+else
+echo > /dev/null
+fi
+
+if [ -z ${Quota} ]; then
+  Quota="0"
+fi
+
+c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+d=$((${c} * 1024 * 1024 * 1024))
+
+if [[ ${c} != "0" ]]; then
+  echo "${d}" >/etc/trojan/${user}
+fi
+DATADB=$(cat /etc/trojan/.trojan.db | grep "^###" | grep -w "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/trojan/.trojan.db
+  echo "### ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/trojan/.trojan.db
+else
+echo "### ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/trojan/.trojan.db
+fi
+curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL
+clear
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>      XRAY/TROJAN</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Remarks   : ${user}
+Domain    : ${domain}
+Limit Quota : ${Quota} GB
+Port TLS  : 400-900
+Port NTLS : 80, 8080, 8081-9999
+id        : ${uuid}
+alterId   : 0
+Security  : auto
+network   : ws or grpc
+Path      : /Multi-Path
+Dynamic   : https://bugmu.com/path
+Name      : trojan-grpc</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+Format OpenClash : https://${domain}:81/trojan-$user.txt
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+Aktif Selama   : $masaaktif Hari
+Dibuat Pada    : $tnggl
+Berakhir Pada  : $expe
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+"
+
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="<code>◇━━━━━━━━━━━━━━━━━◇
+*_PEMBELIAN BERHASIL_*
+◇━━━━━━━━━━━━━━━━━◇
+-» PRODUK : TROJAN
+-» REGION : $CITY
+-» REQ CONFIG : 
+-» REQ NAMA : $user
+-» DEVICE : $iplimit IP
+-» HARGA : 
+-» AKTIF : $masaaktif HARI
+-» TGL EXP : $expe
+◇━━━━━━━━━━━━━━━━━◇
+$nama </code>"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+
+clear
+function Details_Account() {
+echo -e "\033[37m TROJAN  \033[0m"
+echo -e ""
+echo -e "\033[37m Remarks      : ${user} \033[0m" 
+echo -e "\033[37m Host/IP      : ${domain} \033[0m"
+echo -e "\033[37m User Quota   : ${Quota} GB \033[0m"
+echo -e "\033[37m User Ip      : ${iplimit} IP \033[0m"
+echo -e "\033[37m Port NTLS    : 443-900 \033[0m" 
+echo -e "\033[37m port WS      : 80,8880,8080 \033[0m"
+echo -e "\033[37m Key          : ${uuid} \033[0m"
+echo -e "\033[37m ISP          : $ISP \033[0m"
+echo -e "\033[37m Path         : /trojan-ws \033[0m" 
+echo -e "\033[37m ServiceName  : trojan-grpc \033[0m"
+baris_panjang
+}
+
+function Link_Json() {
+echo -e "\033[37m Link TLS     : ${trojanlink} \033[0m" 
+baris_panjang
+echo -e "\033[37m Link NTLS    : ${trojanlink2} \033[0m" 
+baris_panjang 
+echo -e "\033[37m Link GRPC    : ${trojanlink1} \033[0m" 
+baris_panjang
+echo -e "\033[37m OpenClash    : https://${domain}:81/trojan-$user.txt \033[0m" 
+
+}
+
+function Details_Expiry() {
+baris_panjang
+echo -e " \033[33mDays in     : $masaaktif Day \033[0m "
+echo -e " \033[33mExpiry in   : $expe \033[0m "
+}
+
+xdxl_Banner
+Details_Account
+Link_Json
+Details_Expiry
+Sc_Credit

@@ -1,0 +1,342 @@
+#!/bin/bash
+
+#Color
+DF='\e[39m'
+Bold='\e[1m'
+Blink='\e[5m'
+yell='\e[33m'
+RED='\033[0;31m'
+green='\e[32m'
+PURPLE='\e[35m'
+cyan='\e[36m'
+LRED='\e[91m'
+Lgreen='\e[92m'
+Lyellow='\e[93m'
+NC='\e[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+LIGHT='\033[0;37m'
+grenbo="\e[92;1m"
+blue="\033[0;34m"
+Blue="\033[36m"
+clear
+
+loading() {
+  local pid=$1
+  local delay=0.1
+  local spin='-\|/'
+
+  while ps -p $pid > /dev/null; do
+    local temp=${spin#?}
+    printf "[%c] " "$spin"
+    local spin=$temp${spin%"$temp"}
+    sleep $delay
+    printf "\b\b\b\b\b\b"
+  done
+
+  printf "    \b\b\b\b"
+}
+
+# // System Information
+domain=$(cat /etc/xray/domain)
+WKT=$(curl -s ipinfo.io/timezone)
+IPVPS=$(curl -s ipv4.icanhazip.com)
+tram=$(free -m | awk 'NR==2 {print $2}')
+swap=$(free -m | awk 'NR==4 {print $2}')
+freq=$(awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo)
+cores=$(awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo)
+cname=$(awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo)
+knr=$( uname -r )
+
+clear
+# // Exporting IP Address
+export IP=$( curl -s https://ipinfo.io/ip/ )
+clear
+# // SSH
+ssh_service=$(/etc/init.d/ssh status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+openvpn_service="$(systemctl show openvpn.service --no-page)"
+oovpn=$(echo "${openvpn_service}" | grep 'ActiveState=' | cut -f2 -d=)
+dropbear_status=$(/etc/init.d/dropbear status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+haproxy_service=$(systemctl status haproxy | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+noobz_service=$(systemctl status noobzvpns | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+fail2ban_service=$(/etc/init.d/fail2ban status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+cron_service=$(systemctl  status cron | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+badvpn1=$(systemctl status udp-mini-1 | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+badvpn2=$(systemctl status udp-mini-2 | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+badvpn3=$(systemctl status udp-mini-3 | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+Iptables=$(systemctl status netfilter-persistent | grep active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g')
+RClocal=$(systemctl status rc-local | grep active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g')
+Autorebot=$(systemctl status rc-local | grep active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g')
+UdpSSH=$(systemctl status udp-custom | grep active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g')
+openssh=$( systemctl status ssh | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+clear
+
+if [[ $openssh == "running" ]]; then
+    status_openssh="\033[92;1m[ON]$NC"
+else
+    status_openssh="\033[91;1m[OFF]${NC} "
+fi
+
+# // SSH Websocket Proxy
+ssh_ws=$( systemctl status ws | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $ssh_ws == "running" ]]; then
+    status_ws_epro="\033[92;1m[ON]$NC"
+else
+    status_ws_epro="\033[91;1m[OFF]${NC} "
+fi
+
+# // Trojan Proxy
+ss=$( systemctl status xray | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $ss == "running" ]]; then
+    status_ss="\033[92;1m[ON]$NC"
+else
+    status_ss="\033[91;1m[OFF]${NC} "
+fi
+
+# // NGINX
+nginx=$( /etc/init.d/nginx status | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
+if [[ $nginx == "running" ]]; then
+    status_nginx="\033[92;1m[ON]$NC"
+else
+    status_nginx="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE IPTABLES
+if [[ $Iptables == "exited" ]]; then
+    status_galo="\033[92;1m[ON]$NC"
+else
+    status_galo="\033[91;1m[OFF]${NC}"
+fi
+
+# STATUS SERVICE  SSH 
+if [[ $ssh_service == "running" ]]; then 
+   status_ssh="\033[92;1m[ON]$NC"
+else
+   status_ssh="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS NOOBZVPNS SSH 
+if [[ $noobz_service == "running" ]]; then 
+   status_noobz="\033[92;1m[ON]$NC"
+else
+   status_noobz="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS OHP SSH
+#if [[ $ohr == "running" ]]; then 
+ #  sohr="\033[92;1m[ON]${NC}${NC}"
+#else
+ #  sohr="\033[91;1m[OFF]${NC} ${NC}"
+#fi
+
+# STATUS SERVICE OPENVPN
+if [[ $oovpn == "active" ]]; then
+  status_openvpn="\033[92;1m[ON]$NC"
+else
+  status_openvpn="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE DROPBEAR
+if [[ $dropbear_status == "running" ]]; then 
+   status_beruangjatuh="\033[92;1m[ON]$NC"
+else
+   status_beruangjatuh="\033[91;1m[OFF]${NC} ${NC}"
+fi
+
+# STATUS SERVICE HAPROXY
+if [[ $haproxy_service == "running" ]]; then 
+   status_haproxy="\033[92;1m[ON]$NC"
+else
+   status_haproxy="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE  SQUID 
+#if [[ $squid_service == "running" ]]; then 
+  # status_squid="\033[92;1m[ON]${NC} ( No Etror )"
+#else
+  # status_squid="\033[91;1m[OFF]${NC} "
+#fi
+
+# STATUS SERVICE  FAIL2BAN 
+if [[ $fail2ban_service == "running" ]]; then 
+   status_fail2ban="\033[92;1m[ON]$NC"
+else
+   status_fail2ban="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE  CRONS 
+if [[ $cron_service == "running" ]]; then 
+   status_cron="\033[92;1m[ON]$NC"
+else
+   status_cron="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE  BADVPN 1
+if [[ $badvpn1 == "running" ]]; then 
+   status_udp1="\033[92;1m[ON]$NC"
+else
+   status_udp1="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE  BADVPN 2
+if [[ $badvpn2 == "running" ]]; then 
+   status_udp2="\033[92;1m[ON]$NC"
+else
+   status_udp2="\033[91;1m[OFF]${NC} "
+fi
+
+# STATUS SERVICE  BADVPN 3
+if [[ $badvpn3 == "running" ]]; then 
+   status_udp3="\033[92;1m[ON]$NC"
+else
+   status_udp3="\033[91;1m[OFF]${NC} "
+fi
+
+if [[ $RClocal == "exited" ]]; then
+    status_galoo="\033[92;1m[ON]$NC"
+else
+    status_galoo="\033[91;1m[OFF]${NC}"
+fi
+
+if [[ $Autorebot == "exited" ]]; then
+    status_galooo="\033[92;1m[ON]$NC"
+else
+    status_galooo="\033[91;1m[OFF]${NC}"
+fi
+
+# STATUS SERVICE  SSH UDP 
+if [[ $UdpSSH == "running" ]]; then 
+   status_udp="\033[92;1m[ON]$NC"
+else
+   status_udp="\033[91;1m[OFF]${NC} "
+fi
+
+# // Running Function 
+clear
+echo
+echo
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService SSH / TUN                 $blue=$NC $status_ssh"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService SSH UDP                   $blue=$NC $status_udp"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService SSH NOOBZVPNS             $blue=$NC $status_noobz"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OpenVPN SSL               $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OpenVPN WS-SSL            $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OpenVPN UDP               $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OpenVPN TCP               $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OHP SSH                   $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OHP Dropbear              $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService OHP OpenVPN               $blue=$NC $status_openvpn"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService WS ePRO                   $blue=$NC $status_ws_epro"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService BadVPN 7100               $blue=$NC $status_udp1"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService BadVPN 7200               $blue=$NC $status_udp2"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService BadVPN 7300               $blue=$NC $status_udp3"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Dropbear                  $blue=$NC $status_beruangjatuh"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Haproxy                   $blue=$NC $status_haproxy"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Crons                     $blue=$NC $status_cron"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Nginx Webserver           $blue=$NC $status_nginx"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Vmess WS TLS         $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Vmess WS Non TLS     $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Vmess gRPC           $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Vless WS TLS         $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Vless WS Non TLS     $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Vless gRPC           $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Trojan WS            $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Trojan Non WS        $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Trojan gRPC          $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Shadowsocks WS       $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Shadowsocks Non WS   $blue=$NC $status_ss"
+
+sleep 0.6 & loading $!
+
+echo -e " \033[97;1m│ \033[97;1mService Xray Shadowsocks gRPC     $blue=$NC $status_ss"
+echo
+echo
+echo
+read -n 1 -s -r -p "Press any key to back on menu"
+menu

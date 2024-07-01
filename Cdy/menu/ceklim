@@ -1,0 +1,44 @@
+#!/bin/bash
+
+g="\e[92;1m"
+RED="\033[31m"
+NC='\033[0m'
+y='\033[1;93m'
+gg='\e[1;77m'
+ungu="\033[0;35m"
+clear
+touch /root/.system
+data1=( `awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd `)
+for user in "${data1[@]}"
+do
+iplimit1=$(cat /etc/kyt/limit/ssh/ip/$user)
+if [[ $iplimit1 = "" ]]; then
+echo "2" > /etc/kyt/limit/ssh/ip/$user
+else
+echo -ne
+fi
+done
+clear
+echo -e "  ${y}───────────────────────────────────────${NC}"
+echo -e "            ️ ${g}USER LOGIN SSH${NC}  ️"
+echo -e "  ${y}───────────────────────────────────────${NC}"
+echo -e "    ${ungu} LOGIN IP    LIMIT IP    USERNAME ${NC}"
+mulog=$(cek-ssh)
+data=( `awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd`)
+for user in "${data[@]}"
+do
+cekcek=$(echo -e "$mulog" | grep -wE $user | wc -l)
+if [[ $cekcek -gt 0 ]]; then
+iplimit=$(cat /etc/kyt/limit/ssh/ip/$user)
+printf "  %-13s %-7s %-8s %2s\n" "     ${cekcek} IP        ${iplimit} IP      ${user}"
+echo "slot" >> /root/.system
+else
+echo > /dev/null
+fi
+echo send_log > /dev/null
+done
+aktif=$(cat /root/.system | wc -l)
+echo -e "  ${y}───────────────────────────────────────${NC}"
+echo -e "            $aktif User Online"
+echo -e "  ${y}───────────────────────────────────────${NC}"
+sed -i "d" /root/.system

@@ -1,0 +1,320 @@
+#!/bin/bash
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+# ==========================================
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
+clear
+
+# Valid Script
+ipsaya=$(curl -sS ipv4.icanhazip.com)
+data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+date_list=$(date +"%Y-%m-%d" -d "$data_server")
+data_ip="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+checking_sc() {
+  useexp=$(wget -qO- $data_ip | grep $ipsaya | awk '{print $3}')
+  if [[ $date_list < $useexp ]]; then
+    echo -ne
+  else
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e "\033[42m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    echo -e ""
+    echo -e "            \033[91;1mPERMISSION DENIED !\033[0m"
+    echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
+    echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
+    echo -e "             \033[0;33mContact Admin :\033[0m"
+    echo -e "      \033[2;32mWhatsApp\033[0m wa.me/6281327393959"
+	echo -e "      \033[2;32mTelegram\033[0m wa.me/ARI_VPN_STORE"
+    echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+    sleep 10
+	reboot
+  fi
+}
+checking_sc
+clear
+export TIME="10"
+IP=$(curl -sS ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+domain=$(cat /etc/xray/domain)
+nama=$(cat /etc/xray/username)
+clear
+# Getting
+function baris_panjang() {
+   echo -e "\033[5;36m ———————————————————————————————————————————————\033[0m"
+}
+
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e "${ungu}         $nama      ${Xark} "
+baris_panjang
+}
+
+function Sc_Credit(){
+sleep 1
+baris_panjang
+echo -e "${ungu}  Terimakasih Telah Menggunakan ${Xark}"
+echo -e "${ungu}          Script Credit ${Xark}"
+echo -e "${ungu}        $nama ${Xark}"
+baris_panjang
+read -p "Press Any Key For Back TO Menu"
+m-ssh
+}
+
+duration=6
+frames=("██10%" "█████35%" "█████████65%" "█████████████80%" "█████████████████████90%" "█████████████████████████100%")
+
+# Menghitung jumlah frame
+num_frames=${#frames[@]}
+
+# Menghitung jumlah iterasi
+num_iterations=$((duration))
+
+# Fungsi untuk menampilkan animasi loading berwarna
+
+Loading_Animasi() {
+    for ((i = 0; i < num_iterations; i++)); do
+        clear
+        index=$((i % num_frames))
+        color_code=$((31 + i % 7))
+echo ""
+echo ""
+echo ""
+echo -e "\e[1;${color_code}m ${frames[$index]}\e[0m"
+sleep 0.5
+    done
+}
+
+# Menampilkan pesan Sukses setelah animasi selesai
+function Loading_Succes() {
+clear
+echo -e  "\033[5;32mSucces\033[0m"
+sleep 0.1
+clear
+}
+
+function Daftar_Account() {
+grep -E "^#ssh# " "/etc/xray/.userall.db" | cut -d ' ' -f 2-3 | column -t | sort | uniq
+}
+MYIP=$(curl -sS ipv4.icanhazip.com);
+clear
+echo -e "\033[5;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "             List Member SSH Expaired                  "
+echo -e "\033[5;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"      
+echo "USERNAME          PASSWORD          "
+echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+Daftar_Account
+echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "           Masukan Usernamenya              "
+echo -e "\033[5;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" 
+echo "" 
+	read -p " Username : " user
+	if [ -z $user ]; then
+    exit
+    else
+baris_panjang
+    read -p " Expired (day)    : " masaaktif
+baris_panjang
+    read -p " Limit User (GB)  : " Quota
+baris_panjang
+    read -p " Limit User (IP)  : " iplimit
+baris_panjang
+echo ""
+fi
+Loading_Animasi
+Loading_Succes
+if [[ $iplimit -gt 0 ]]; then
+mkdir -p /etc/kyt/limit/ssh/ip/
+echo -e "$iplimit" > /etc/kyt/limit/ssh/ip/$user
+else
+echo > /dev/null
+fi
+clear
+Pass=$(grep -E "^#ssh#" "/etc/xray/.userall.db" |  grep -wE "${user}" | cut -d " " -f 3)
+if [ -z $Pass ]; then
+echo -e "\033[5;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "        Recovery Account Failed!             "
+echo -e "\033[5;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
+echo -e ""
+echo -e "   Username Tidak Ditemukan      "
+echo -e ""
+echo -e "\033[5;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e ""
+read -n 1 -s -r -p "Press any key to back"
+exit 1
+else
+tgl=$(date -d "$masaaktif days" +"%d")
+bln=$(date -d "$masaaktif days" +"%b")
+thn=$(date -d "$masaaktif days" +"%Y")
+expe="$tgl $bln, $thn"
+tgl2=$(date +"%d")
+bln2=$(date +"%b")
+thn2=$(date +"%Y")
+tnggl="$tgl2 $bln2, $thn2"
+useradd -e `date -d "$masaaktif days" +"%Y-%m-%d"` -s /bin/false -M $user
+expi="$(chage -l $user | grep "Account expires" | awk -F": " '{print $2}')"
+echo -e "$Pass\n$Pass\n"|passwd $user &> /dev/null
+hariini=`date -d "0 days" +"%Y-%m-%d"`
+expi=`date -d "$masaaktif days" +"%Y-%m-%d"`
+fi
+if [ ! -e /etc/ssh ]; then
+  mkdir -p /etc/ssh
+fi
+
+if [ -z ${Quota} ]; then
+  Quota="0"
+fi
+
+c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
+d=$((${c} * 1024 * 1024 * 1024))
+
+if [[ ${c} != "0" ]]; then
+  echo "${d}" >/etc/ssh/${user}
+fi
+DATADB=$(cat /etc/ssh/.ssh.db | grep "^#ssh#" | grep -wE "${user}" | awk '{print $2}')
+if [[ "${DATADB}" != '' ]]; then
+  sed -i "/\b${user}\b/d" /etc/ssh/.ssh.db
+echo "#ssh# ${user} ${Pass} ${Quota} ${iplimit} ${expe}" >>/etc/ssh/.ssh.db
+sed -i "/^#ssh# $user $Pass/d" /etc/xray/.userall.db
+else
+echo "#ssh# ${user} ${Pass} ${Quota} ${iplimit} ${expe}" >>/etc/ssh/.ssh.db
+sed -i "/^#ssh# $user $Pass/d" /etc/xray/.userall.db
+fi
+clear
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>SSH OVPN Account     </code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Username         : </code> <code>$user</code>
+<code>Password         : </code> <code>$Pass</code>
+<code>Limit Quota       ; </code> <code>$Quota</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>IP               : $IP</code>
+<code>Host             : </code> <code>$domain</code>
+<code>Port OpenSSH     : 443, 80, 22</code>
+<code>Port Dropbear    : 443, 109</code>
+<code>Port SSH WS      : 80, 8080, 8081-9999 </code>
+<code>Port SSH UDP     : 1-65535 </code>
+<code>Port SSH SSL WS  : 443</code>
+<code>Port SSL/TLS     : 400-900</code>
+<code>Port OVPN WS SSL : 443</code>
+<code>Port OVPN SSL    : 443</code>
+<code>Port OVPN TCP    : 443, 1194</code>
+<code>Port OVPN UDP    : 2200</code>
+<code>BadVPN UDP       : 7100, 7300, 7300</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>SSH WEBSOCKET    : </code><code>$domain:80@$user:$Pass</code>
+<code>SSH SSL          : </code><code>$domain:443@$user:$Pass</code>
+<code>SSH UDP          : </code><code>$domain:1-65535@$user:$Pass</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Payload WSS      : </code><code>GET wss://BUG.COM/ HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: websocket[crlf][crlf]</code>
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+OVPN Download : https://$domain:81/
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+<code>Save Link Account: </code>https://$domain:81/ssh-$user.txt
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+Aktif Selama         : $masaaktif Hari
+Dibuat Pada          : $tnggl
+Berakhir Pada        : $expe
+<code>◇━━━━━━━━━━━━━━━━━◇</code>
+"
+
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+
+CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="<code>◇━━━━━━━━━━━━━━━━━◇
+*_PEMBELIAN BERHASIL_*
+◇━━━━━━━━━━━━━━━━━◇
+-» PRODUK : SSH
+-» REGION : $CITY
+-» REQ CONFIG : 
+-» REQ NAMA : $user
+-» DEVICE : $iplimit IP
+-» HARGA : 
+-» AKTIF : $masaaktif HARI
+-» TGL EXP : $expe
+◇━━━━━━━━━━━━━━━━━◇
+$nama </code>"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+clear
+PAYLOADWS="GET / HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]"
+
+PAYLOADTLS="GET wss://$domain/ HTTP/1.1[crlf]Host: [host][crlf]Connection: Upgrade[crlf]User-Agent: [ua][crlf]Upgrade: websocket[crlf][crlf]"
+
+PAYLOADHANCED="HEAD / HTTP/1.1[crlf]Host: Masukan_Bug[crlf][crlf]PATCH / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf][split]HTTP/ 1[crlf][crlf]"
+
+
+
+
+
+# Details ACcount
+function Details_Ssh(){
+xdxl_Banner
+echo -e "  \033[37;1;7mSSH OPENVPN\033[0m"
+baris_panjang
+echo -e "\033[3;37m Remark      : $user \033[0m"
+echo -e "\033[3;37m Password    : $Pass \033[0m"
+echo -e "\033[3;37m Limit Ip    : ${iplimit} Devic \033[0m"
+echo -e "\033[3;37m Domain      : $domain \033[0m"
+echo -e "\033[3;37m ISP         : $ISP \033[0m "
+echo -e "\033[3;37m OpenSSH     : 443, 80, 22 \033[0m"
+echo -e "\033[3;37m Port UDP    : 1-65535 \033[0m"
+echo -e "\033[3;37m SSH WS      : 80,8080,8880,2082 \033[0m"
+echo -e "\033[3;37m SSL/TLS     : 443 \033[0m"
+echo -e "\033[3;37m OVPN UDP    : 2200 \033[0m"
+baris_panjang
+}
+
+
+
+function Copy_Faste(){
+echo -e "\033[3;37m Port 80     : $domain:80@$user:$Pass \033[0m"
+echo -e "\033[3;37m Port 443    : $domain:443@$user:$Pass \033[0m"
+echo -e "\033[3;37m Udp Custom  : $domain:1-65535@$user:$Pass\033[0m"
+echo -e "\033[3;37m OpenVpn     : https://$domain:81/ "
+echo -e "\033[3;37m Account     : https://$domain:81/ssh-$user.txt "
+}
+
+
+
+function Details_Payload(){
+baris_panjang
+echo -e "\033[3;37m Payload WS  : ${PAYLOADWS}\033[0m"
+baris_panjang
+echo -e "\033[3;37m Payload TLS : ${PAYLOADTLS}\033[0m"
+baris_panjang
+echo -e "\033[3;37m Payload ENCD: ${PAYLOADHANCED}\033[0m"
+baris_panjang
+}
+
+
+function Expiry_Details(){
+echo -e "\033[33m Days in    : $masaaktif Day \033[0m"
+echo -e "\033[33m Expiry in  : $expe \033[0m"
+}
+
+
+xdxl_Banner
+Details_Ssh
+Copy_Faste
+Details_Payload
+Expiry_Details
+Sc_Credit

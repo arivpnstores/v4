@@ -1,0 +1,75 @@
+#!/bin/bash
+
+function send_log() {
+    CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+    KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+    TIME="10"
+    URL="https://api.telegram.org/bot$KEY/sendMessage"
+    TEXT="
+<code>────────────────────</code>
+<b>⚠️ NOTIFICATIONS MULTI LOGIN SSH⚠️</b>
+<code>────────────────────</code>
+<code>Username          : </code><code>$user</code>
+<code>Limit IP            : </code><code>${iplimit}</code>
+<code>User Login         : </code><code>${cekcek}</code>
+<code>Akun Locked       : </code><code>2 Jam</code>
+<code>────────────────────</code>
+"
+    curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
+function Log_SSH() {
+sed -i "d" /tmp/log-ssh.txt > /dev/null
+if [ -e "/var/log/auth.log" ]; then
+        LOG="/var/log/auth.log";
+fi
+if [ -e "/var/log/secure" ]; then
+        LOG="/var/log/secure";
+fi
+                
+data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
+cat $LOG | grep -i dropbear | grep -i "Password auth succeeded" > /tmp/login-db.txt;
+for PID in "${data[@]}"
+do
+            cat /tmp/login-db.txt | grep "dropbear\[$PID\]" > /tmp/login-db-pid.txt;
+            NUM=`cat /tmp/login-db-pid.txt | wc -l`;
+            USER=`cat /tmp/login-db-pid.txt | awk '{print $10}'`;
+            IP=`cat /tmp/login-db-pid.txt | awk '{print $12}'`;
+            if [ $NUM -eq 1 ]; then
+                    echo "$PID - $USER - $IP" >> /tmp/log-ssh.txt;
+                    fi
+done
+}
+function Limit_Ip() {
+data1=( `cat /etc/passwd | grep home | cut -d ' ' -f 1 | cut -d : -f 1`);
+for user in "${data1[@]}"
+do
+iplimit1=$(cat /etc/kyt/limit/ssh/ip/$user)
+if [[ $iplimit1 = "" ]]; then
+echo "2" > /etc/kyt/limit/ssh/ip/$user
+else
+echo -ne
+fi
+done
+}
+Log_SSH
+Limit_Ip
+clear
+mulog=$(cat /tmp/log-ssh.txt)
+date=$(date)
+data=( `ls /etc/kyt/limit/ssh/ip`)
+
+for user in "${data[@]}"
+do
+    iplimit=$(cat /etc/kyt/limit/ssh/ip/$user)
+    cekcek=$(echo -e "$mulog" | grep -wE $user | wc -l)
+
+    if [[ $cekcek -gt $iplimit ]]; then
+        passwd -l "$user" > /dev/null
+        send_log
+        systemctl restart ws 
+        # Jadwalkan untuk membuka kembali akun setelah 15 menit
+    else
+        echo -ne
+    fi
+done
+echo > /dev/null

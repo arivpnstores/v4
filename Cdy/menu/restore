@@ -1,0 +1,76 @@
+#!/bin/bash
+# COLOR VALIDATION
+clear
+RED='\033[0;31m'
+NC='\033[0m'
+gray="\e[1;30m"
+Blue="\033[0;34m"
+green='\033[0;32m'
+grenbo="\e[92;1m"
+YELL='\033[0;33m'
+BG_BLU="\033[44;1m" # BG BIRU
+# Getting
+MYIP=$(curl -sS ipv4.icanhazip.com)
+IP=$(wget -qO- icanhazip.com)
+dateToday=$(date +"%Y-%m-%d")
+Name=$(curl https://raw.githubusercontent.com/arivpnstores/izin/main/ip | grep $MYIP | awk '{print $2}')
+clear
+restoreBot() {
+    switch=on
+    bottoken=6226300152:AAE8Qv37sXKaIDn80q7cVkSbvYBWeCUlE9E
+    adminid=1962241851
+    read -p "File ID   : " fileId
+    read -p "File PATH : " filePath
+    curl -Ss --request GET \
+        --url "https://api.telegram.org/file/bot${bottoken}/${filePath}?file_id=${fileId}" >backup.zip
+   if [[ -z $InputPass ]]; then
+	InputPass="Ari123Ok"
+	fi
+	sleep 1
+    echo -e "[ ${green}INFO${NC} ] • Restore Data..."
+	echo -e "[ ${green}INFO${NC} ] • Getting your data..."
+	unzip -P $InputPass /root/backup.zip &> /dev/null
+    echo -e "[ ${green}INFO${NC} ] • Starting to restore data..."
+    rm -f /root/backup.zip &> /dev/null
+	sleep 1
+    cd /root/backup
+	echo -e "[ ${green}INFO${NC} ] • Please Wait , Restoring In Process Now... "
+	sleep 1
+	cp passwd /etc/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Restoring passwd data..."
+	sleep 1
+	cp group /etc/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Restoring group data..."
+	sleep 1
+	cp shadow /etc/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Restoring shadow data..."
+	sleep 1
+	cp gshadow /etc/ &>/dev/null
+	echo -e "[ ${green}INFO${NC} ] • Restoring gshadow data..."
+	sleep 1
+    cp -r kyt /var/lib/ &>/dev/null
+    cp -r xray /etc/ &>/dev/null
+    cp -r html /var/www/ &>/dev/null
+cp .bot.db /etc/bot/ &>/dev/null
+cp crontab /etc/ &>/dev/null
+cp .ssh.db /etc/ssh/ &>/dev/null
+cp .vmess.db /etc/vmess/ &>/dev/null
+cp .vless.db /etc/vless/ &>/dev/null
+cp .trojan.db /etc/trojan/ &>/dev/null
+cp -rf qt/* /etc/limit &>/dev/null
+cp -r limit /etc/kyt/ &>/dev/null
+cp -r slowdns /etc/slowdns &>/dev/null
+cp -r backup/banner.txt /etc/banner.txt &>/dev/null
+cp -r ssh /etc/ &>/dev/null
+cp -r xray /etc/ &>/dev/null
+cp -r vmess /etc/ &>/dev/null
+cp -r trojan /etc/ &>/dev/null
+cp -r vless /etc/ &>/dev/null
+cp -r shadowsock /etc/ &>/dev/null
+    rm -rf /root/backup
+    rm -f backup.zip
+    echo -e "[ ${green}INFO${NC} ] • Done Restore... "
+    read -n 1 -s -r -p "Press any key to Restart"
+    reset
+}
+restoreBot

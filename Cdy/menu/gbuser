@@ -1,0 +1,160 @@
+#!/bin/bash
+# ==========================================
+# Color
+RED='\033[0;31m'
+NC='\033[0m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHT='\033[0;37m'
+CHATID=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 3)
+KEY=$(grep -E "^#bot# " "/etc/bot/.bot.db" | cut -d ' ' -f 2)
+export TIME="10"
+export URL="https://api.telegram.org/bot$KEY/sendMessage"
+clear
+function notif_restore() {
+    green "Notif AddHost Tele"
+    sleep 2
+    CHATID="$CHATID"
+KEY="$KEY"
+TIME="$TIME"
+URL="$URL"
+TEXT="
+<code>◇━━━━━━━━━━━━━━◇</code>
+<b>  ⚠️ RESTORE NOTIF⚠️</b>
+<b>     Detail Restore VPS</b>
+<code>◇━━━━━━━━━━━━━━◇</code>
+<code>Restore Vps Done</code>
+<code>◇━━━━━━━━━━━━━━◇</code>
+"
+
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
+fun_bar() {
+    CMD[0]="$1"
+    CMD[1]="$2"
+    (
+        [[ -e $HOME/fim ]] && rm $HOME/fim
+        ${CMD[0]} -y >/dev/null 2>&1
+        ${CMD[1]} -y >/dev/null 2>&1
+        touch $HOME/fim
+    ) >/dev/null 2>&1 &
+    tput civis
+    echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    while true; do
+        for ((i = 0; i < 18; i++)); do
+            echo -ne "\033[0;32m#"
+            sleep 0.1s
+        done
+        [[ -e $HOME/fim ]] && rm $HOME/fim && break
+        echo -e "\033[0;33m]"
+        sleep 1s
+        tput cuu1
+        tput dl1
+        echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
+    done
+    echo -e "\033[0;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+    tput cnorm
+}
+# ==========================================
+# Getting
+
+clear
+echo "Silahkan Masukin Link Backupnya"
+read -rp "Link File: " -e url
+wget -O backup.zip "$url"
+unzip backup.zip
+rm -f backup.zip
+sleep 1
+
+cd /root/backup
+cat passwd | awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' >/tmp/userssh
+data=$(`cat /tmp/userssh`)
+for user in "${data[@]}"
+do
+cekcek=$(cat /etc/passwd | grep -i $user | wc -l)
+if [[ ${cekcek} == "0" ]]; then
+cat shadow | grep -i "$user"  >> /etc/shadow
+cat passwd | grep -i "$user"  >> /etc/passwd
+fi
+done
+data=$(`cat xray/config.json | grep -w "^###" | cut -d " " -f2 | sort | uniq`)
+for user in "${data[@]}"
+do
+cekcek=$(cat /etc/xray/config.json | grep -i "^### $user" | cut -d " " -f2 | sort | uniq)
+if [[ -z ${cekcek} ]]; then
+exp=$(egrep -w "###"  "/root/backup/xray/config.json" | grep -wE $user | cut -d " " -f3 | sort | uniq)
+if [[ -z $exp ]]; then
+echo -ne
+else
+uuid=$(egrep -w "^},{"  "/root/backup/xray/config.json" | grep -wE $user | cut -d '"' -f4 | sort | uniq)
+sed -i '/#vmess$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vmessgrpc$/a\### '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+cp limit/vmess/ip/${user} /etc/kyt/limit/vmess/ip/${user}
+cp vmess/${user} /etc/limit/vmess/${user}
+fi
+fi
+done
+data=$(`cat xray/config.json | grep -w "^#&" | cut -d " " -f2 | sort | uniq`)
+for user in "${data[@]}"
+do
+cekcek=$(cat /etc/xray/config.json | grep -i "^#& $user" | cut -d " " -f2 | sort | uniq)
+if [[ -z ${cekcek} ]]; then
+exp=$(egrep -w "#&"  "/root/backup/xray/config.json" | grep -wE $user | cut -d " " -f3 | sort | uniq)
+if [[ -z $exp ]]; then
+echo -ne
+else
+uuid=$(egrep -w "^},{"  "/root/backup/xray/config.json" | grep -wE $user | cut -d '"' -f4 | sort | uniq)
+sed -i '/#vless$/a\#& '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#vlessgrpc$/a\#& '"$user $exp"'\
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/xray/config.json
+cp limit/vless/ip/${user} /etc/kyt/limit/vless/ip/${user}
+cp vless/${user} /etc/limit/vless/${user}
+fi
+fi
+done
+data=$(`cat xray/config.json | grep -w "^#!" | cut -d " " -f2 | sort | uniq`)
+for user in "${data[@]}"
+do
+cekcek=$(cat /etc/xray/config.json | grep -i "^#! $user" | cut -d " " -f2 | sort | uniq)
+if [[ -z ${cekcek} ]]; then
+exp=$(egrep -w "#!"  "/root/backup/xray/config.json" | grep -wE $user | cut -d " " -f3 | sort | uniq)
+if [[ -z $exp ]]; then
+echo -ne
+else
+uuid=$(egrep -w "^},{"  "/root/backup/xray/config.json" | grep -wE $user | cut -d '"' -f4 | sort | uniq)
+sed -i '/#trojanws$/a\#! '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+sed -i '/#trojangrpc$/a\#! '"$user $exp"'\
+},{"password": "'""$uuid""'","email": "'""$user""'"' /etc/xray/config.json
+cp limit/trojan/ip/${user} /etc/kyt/limit/trojan/ip/${user}
+cp trojan/${user} /etc/limit/trojan/${user}
+fi
+fi
+done
+cat .ssh.db >> /etc/ssh/.ssh.db
+cat .vmess.db >> /etc/vmess/.vmess.db
+cat .vless.db >> /etc/vless/.vless.db
+cat .trojan.db >> /etc/trojan/.trojan.db
+notif_restore
+rm -rf /root/backup
+rm -f backup.zip
+#reset
+echo ""
+
+clear
+echo -e "   ${BLUE}_______________________________$NC"
+echo -e "   \e[1;32m      RESTORE PROSES $NC"
+echo -e "   ${BLUE}_______________________________$NC"
+echo -e ""
+echo -e " \033[1;91m Menambahkan User Sedang Berlangsung!!\033[1;37m"
+#fun_bar 'res'
+echo -e "   ${BLUE}_______________________________$NC"
+echo -e ""
+read -n 1 -s -r -p "Press [ Enter ] to back on menu"
+#menu

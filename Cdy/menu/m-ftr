@@ -1,0 +1,163 @@
+#!/bin/bash
+y='\033[1;93m'
+c="\033[0;36m"
+g="\e[92;1m"
+r="\033[1;31m"
+NC='\e[0m'
+gray="\e[1;30m"
+Blue="\033[1;36m"
+GREEN='\033[0;32m'
+grenbo="\033[1;95m"
+yell='\e[33m'
+BGX="\033[42m"
+END='\e[0m'
+bc="\e[5;36m"
+ungu='\033[0;35m'
+Green_background="\033[42;37m"
+Red_background="\033[41;37m"
+Suffix="\033[0m"
+NC='\e[0m'
+BlueCyan='\e[5;36m'
+Xark='\e[0m'
+ungu='\033[35m'
+yellow='\e[33m'
+WhiteBe='\e[5;37m'
+GreenBe='\e[5;32m'
+BlueCyan='\e[5;36m'
+White="\033[97;1m"
+Green="\033[92;1m"
+Cyan="\033[96;1m"
+Xark='\e[0m'
+BG_BLU="\033[44;1m" # BG BIRU
+nama=$(cat /etc/xray/username)
+clear
+function xdxl_Banner() {
+clear
+baris_panjang
+echo -e       "\033[0;35m                  ARISCTUNNEL V4                \033[0m"
+baris_panjang
+}
+
+function baris_panjang() {
+  echo -e "${BlueCyan} ———————————————————————————————————————${Xark}"
+}
+function ATAS() {
+  echo -e     "${ungu}                FEATURES               ${Xark} "
+}
+
+function  FIXX() {
+  echo -e  " ${BG_BLU}               MENU FIXX               ${Xark}"
+}
+
+function  ADMIN() {
+  echo -e  " ${BG_BLU}               ADMIN AKSES             ${Xark}"
+}
+
+function  CLEAR() {
+  echo -e  " ${BG_BLU}               MENU CLEAR              ${Xark}"
+}
+
+
+function  INFORMATION() {
+  echo -e  " ${BG_BLU}              INFORMATION              ${Xark}"
+}
+
+
+function  OTHER() {
+  echo -e  " ${BG_BLU}                OTHER                  ${Xark}"
+}
+
+
+function Create_Bot_Notif() {
+  create-bot-notif
+}
+
+
+function Info_Port() {
+  prot
+}
+
+# Banner 
+function Banner(){
+clear
+baris_panjang
+ATAS
+baris_panjang
+}
+
+
+function Menu_Lambofgod() {
+baris_panjang
+echo -e ""
+echo -e "  1.) Running Service    "  
+echo -e "  2.) Restart Service    " 
+echo -e "  3.) Auto Reboot	  " 
+echo -e "  4.) Monitoring         " 
+echo -e "  5.) SpeedTest 		  "
+echo -e "  6.) Delete All Account Exp "
+baris_panjang
+ADMIN
+baris_panjang
+echo -e "  7.) Factory Reset      "
+echo -e "  8.) Install SlowDns    "  
+baris_panjang
+FIXX
+baris_panjang
+echo -e "  9.) Change Banner      "  
+echo -e " 10.) Change Domain      "  
+echo -e " 11.) Fixx Haproxy       "  
+echo -e " 12.) Fixx Domain        "  
+echo -e " 13.) Fix Akun Pada Bot  "  
+baris_panjang
+CLEAR
+baris_panjang
+echo -e " 14.) Clear Cache      "
+echo -e " 15.) Clear Logs       "
+echo -e " 16.) Clear Cache File "
+baris_panjang
+INFORMATION
+baris_panjang
+echo -e " 17.) Info Service Port  "
+echo -e " 18.) Information System "
+baris_panjang
+echo -e " 19.) Limit-on-off XRAY  "
+echo -e " 20.) Back to Menu"
+echo -e "  x . EXIT "
+echo -e ""
+baris_panjang
+echo -e ""
+
+}
+
+function Select_Menu() {
+read -p "Select From Options [1-22 or x] :  " NB
+case $NB in
+1) clear ; run ;;
+2) clear ; reset ;;
+3) clear ; autoreboot ;;
+4) clear ; gotop ;;
+5) clear ; speedtest ;;
+6) clear ; xp ;;
+7) clear ; Factreset ;;
+8) clear ; wget -q https://raw.githubusercontent.com/Dekdoo12/autoscript/main/Fls/nameserver && chmod +x nameserver && ./nameserver && reset ;;
+9) clear ; nano /etc/banner.txt ;;
+10) clear ; change-domain ;;
+11) clear ; fixhap ;;
+12) clear ; fixcert ;;
+13) clear ; fixakunbot ;;
+14) clear ; clearcache ;;
+15) clear ; clearlog ;;
+16) clear ; delet-cache-file ;;
+17) clear ; Info_Port ;;
+18) clear ; about ;;
+19) clear ; limit-on-off ;;
+20) clear ; menu ;;
+x) exit ;;
+*) m-ftr ;;
+esac
+}
+
+
+Banner
+Menu_Lambofgod
+Select_Menu
