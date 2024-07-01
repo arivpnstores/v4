@@ -232,7 +232,6 @@ async def speedtest(event):
 async def backup(event):
 	async def backup_(event):
 		async with bot.conversation(chat) as user:
-			await event.respond('**Input Email:**')
 			user = user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
 			user = (await user).raw_text
 		cmd = f'printf "%s\n" "{user}" | backup'
@@ -258,28 +257,35 @@ async def backup(event):
 
 @bot.on(events.CallbackQuery(data=b'restore'))
 async def restore(event):
-	async def restore_(event):
-		async with bot.conversation(chat) as user:
-			await event.respond('**Input Link Backup:**')
-			user = user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
-			user = (await user).raw_text
-		cmd = f'printf "%s\n" "{user}" | restore'
-		try:
-			a = subprocess.check_output(cmd, shell=True).decode("utf-8")
-		except:
-			await event.respond("**Link Not Exist**")
-		else:
-			msg = f"""```{z}```
+    async def restore_(event):
+        async with bot.conversation(chat) as user:
+            await event.respond('**File ID :**')
+            user1 = await user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
+            link1 = user1.raw_text
+            
+            await event.respond('**File PATH :**')
+            user2 = await user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
+            link2 = user2.raw_text
+            
+        cmd = f'printf "%s\n%s\n" "{link1}" "{link2}" | restore'
+        try:
+            a = subprocess.check_output(cmd, shell=True).decode("utf-8")
+        except:
+            await event.respond("**Link Not Exist**")
+        else:
+            msg = f"""```{a}```
 **🤖@ARI_VPN_STORE**
 """
-			await event.respond(msg)
-	chat = event.chat_id
-	sender = await event.get_sender()
-	a = valid(str(sender.id))
-	if a == "true":
-		await restore_(event)
-	else:
-		await event.answer("Akses Ditolak",alert=True)
+            await event.respond(msg)
+    
+    chat = event.chat_id
+    sender = await event.get_sender()
+    a = valid(str(sender.id))
+    if a == "true":
+        await restore_(event)
+    else:
+        await event.answer("Akses Ditolak", alert=True)
+
 
 @bot.on(events.CallbackQuery(data=b'point'))
 async def point(event):
