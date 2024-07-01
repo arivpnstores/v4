@@ -238,7 +238,7 @@ async def backup(event):
             await event.respond("**Not Exist**")
         else:
             msg = f"""
-{a}
+```{a}```
 **» 🤖@ARI_VPN_STORE**
 """
             await event.respond(msg)
