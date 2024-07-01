@@ -230,56 +230,56 @@ async def speedtest(event):
 
 @bot.on(events.CallbackQuery(data=b'backup'))
 async def backup(event):
-	async def backup_(event):
-		async with bot.conversation(chat) as user:
-			await event.respond('**PASSWORD NYA?**')
-			user = user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
-			user = (await user).raw_text
-		cmd = f'printf "%s\n" "{user}" | backup'
-		try:
-			a = subprocess.check_output(cmd, shell=True).decode("utf-8")
-		except:
-			await event.respond("**Not Exist**")
-		else:
-			msg = f"""
-```
+    async def backup_(event):
+        cmd = 'backup-bot'
+        try:
+            a = subprocess.check_output(cmd, shell=True).decode("utf-8")
+        except:
+            await event.respond("**Not Exist**")
+        else:
+            msg = f"""
 {a}
-```
 **» 🤖@ARI_VPN_STORE**
 """
-			await event.respond(msg)
-	chat = event.chat_id
-	sender = await event.get_sender()
-	a = valid(str(sender.id))
-	if a == "true":
-		await backup_(event)
-	else:
-		await event.answer("Akses Ditolak",alert=True)
+            await event.respond(msg)
+    chat = event.chat_id
+    sender = await event.get_sender()
+    a = valid(str(sender.id))
+    if a == "true":
+        await backup_(event)
+    else:
+        await event.answer("Akses Ditolak", alert=True)
 
 @bot.on(events.CallbackQuery(data=b'restore'))
 async def restore(event):
-	async def restore_(event):
-		async with bot.conversation(chat) as user:
-			await event.respond('**FORMAT TXT \n File ID   : \n File Path : **')
-			user = user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
-			user = (await user).raw_text
-		cmd = f'printf "%s\n" "{user}" | restore'
-		try:
-			a = subprocess.check_output(cmd, shell=True).decode("utf-8")
-		except:
-			await event.respond("**Link Not Exist**")
-		else:
-			msg = f"""```{z}```
+    async def restore_(event):
+        async with bot.conversation(chat) as user:
+            await event.respond('**File ID   :**')
+            file_id_event = await user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
+            file_id = file_id_event.raw_text
+            
+            await event.respond('**File Path :**')
+            file_path_event = await user.wait_event(events.NewMessage(incoming=True, from_users=sender.id))
+            file_path = file_path_event.raw_text
+            
+        cmd = f'printf "%s\n%s\n" "{file_id}" "{file_path}" | restore-bot'
+        try:
+            a = subprocess.check_output(cmd, shell=True).decode("utf-8")
+        except:
+            await event.respond("**Link Not Exist**")
+        else:
+            msg = f"""```{a}```
 **🤖@ARI_VPN_STORE**
 """
-			await event.respond(msg)
-	chat = event.chat_id
-	sender = await event.get_sender()
-	a = valid(str(sender.id))
-	if a == "true":
-		await restore_(event)
-	else:
-		await event.answer("Akses Ditolak",alert=True)
+            await event.respond(msg)
+    
+    chat = event.chat_id
+    sender = await event.get_sender()
+    a = valid(str(sender.id))
+    if a == "true":
+        await restore_(event)
+    else:
+        await event.answer("Akses Ditolak", alert=True)
 
 @bot.on(events.CallbackQuery(data=b'point'))
 async def point(event):
