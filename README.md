@@ -3,7 +3,7 @@
 - DEBIAN 10
 
 ### FITUR TAMBAHAN
-- Tambah Swap 1GiB
+- Tambah Swap 2GB
 - Pemasangan yang dinamis
 - Tuning profile pada server
 - Xray Core
