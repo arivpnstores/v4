@@ -19,13 +19,13 @@ apt update && apt upgrade
 apt install neofetch -y
 apt install python3 python3-pip git
 cd /usr/bin
-wget https://raw.githubusercontent.com/arivpnstores/v4/main/Bot/bot.zip
+echo -e '\033[1;32mwaiting...\e[0m' && gdown  "1_kLjPdc85irQ5gIanlskTbl59kWAK3ay" -O bot.zip >/dev/null 2>&1
 unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget https://raw.githubusercontent.com/arivpnstores/v4/main/Bot/kyt.zip
+echo -e '\033[1;32mwaiting...\e[0m' && gdown  "12Rya_viQCGE3LyJhkZq3Mih_i9Pyym9V" -O kyt.zip >/dev/null 2>&1
 unzip kyt.zip
 pip3 install -r kyt/requirements.txt
 
