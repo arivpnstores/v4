@@ -3,15 +3,28 @@
 green='\e[32m'
 NC='\e[0m'
 
-read -rp "Masukkan URL file backup (backup.zip): " backup_url
+ read -rp "Masukkan URL file backup (backup.zip): " backup_url
 
 if [[ ! -f /root/backup.zip ]]; then
   echo -e "[ ${green}INFO${NC} ] • File /root/backup.zip tidak ditemukan. Mencoba download file backup.zip dari URL yang dimasukkan..."
-  wget -O /root/backup.zip "$backup_url"
+
+  if [[ "$backup_url" == *"drive.google.com"* ]]; then
+    # Ambil file ID dari URL Google Drive
+    file_id=$(echo "$backup_url" | grep -oE '[-\w]{25,}' | head -n 1)
+    if [[ -z "$file_id" ]]; then
+      echo -e "[ ${green}ERROR${NC} ] • Tidak dapat mengambil file ID dari URL Google Drive."
+      exit 1
+    fi
+    gdown --id "$file_id" -O /root/backup.zip
+  else
+    wget -O /root/backup.zip "$backup_url"
+  fi
+
   if [[ $? -ne 0 ]]; then
     echo -e "[ ${green}ERROR${NC} ] • Gagal mendownload file backup.zip. Pastikan URL benar dan koneksi internet tersedia."
     exit 1
   fi
+
   echo -e "[ ${green}INFO${NC} ] • Download file backup.zip berhasil."
 fi
 
