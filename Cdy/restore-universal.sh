@@ -15,9 +15,7 @@ if [[ ! -f /root/backup.zip ]]; then
   echo -e "[ ${green}INFO${NC} ] • Download file backup.zip berhasil."
 fi
 
-read -rp "Masukkan password backup: " passwordmu
 BackupFile="/root/backup.zip"
-
 # coba extract tanpa password
 7z x "$BackupFile" &> /dev/null
 if [ $? -ne 0 ]; then
@@ -26,7 +24,7 @@ if [ $? -ne 0 ]; then
     if [ $? -eq 0 ]; then
         echo "Restore berhasil dengan password."
     else
-        echo "Restore gagal, password salah atau file rusak."
+        read -rp "Masukkan password backup: " passwordmu 
     fi
 else
     echo "Restore berhasil tanpa password."
