@@ -2,6 +2,26 @@
 
 green='\e[32m'
 NC='\e[0m'
+echo "📦 Mencoba install gdown dengan pip..."
+if ! pip install gdown; then
+  echo "⚠️ Gagal install gdown pakai pip."
+
+  echo "🔄 Update dan install python3-pip..."
+  apt update && apt install python3-pip -y
+
+  echo "🔁 Coba ulang install gdown dengan pip3..."
+  if pip3 install gdown; then
+    echo "✅ Berhasil install gdown dengan pip3."
+  else
+    echo "❌ Gagal install gdown dengan pip3 juga!"
+  fi
+
+  echo "⬇️ Install wget sebagai alternatif..."
+  apt install wget -y
+else
+  echo "✅ gdown berhasil diinstall dengan pip."
+fi
+
 
  read -rp "Masukkan URL file backup (backup.zip): " backup_url
 
