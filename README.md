@@ -4,11 +4,15 @@
 ```bash
 wget -O fix-add-ssl.sh https://raw.githubusercontent.com/arivpnstores/v4/main/fix-add-ssl.sh && chmod +x fix-add-ssl.sh && ./fix-add-ssl.sh
 ```
-
+## FIX UDP
+```bash
+wget -O udp https://raw.githubusercontent.com/arivpnstores/v4/main/udp && chmod +x udp && ./udp
+```
 ## BACKUP UNIVERSAL
 ```bash
 wget -O restore-universal.sh https://raw.githubusercontent.com/arivpnstores/v4/main/Cdy/restore-universal.sh && chmod +x restore-universal.sh && ./restore-universal.sh
 ```
+
 
 
 
