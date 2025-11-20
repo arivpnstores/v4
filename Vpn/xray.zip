@@ -275,14 +275,17 @@ select_random_domain() {
     
     # Jika unduhan berhasil, lanjutkan dengan eksekusi
     if [ $? -eq 0 ]; then
-        chmod +x cf.sh
-        ./cf.sh > /dev/null 2>&1
+            chmod +x cf.sh
+            ./cf.sh > /dev/null 2>&1
         rm -f /root/cf.sh /root/cf-02.sh eror.zip
     else
         # Jika unduhan gagal, bisa menambahkan metode cadangan di sini
         # Contoh: wget sebagai cadangan
-        wget "https://raw.githubusercontent.com/arivpnstores/v4/main/Fls/cf.sh" -O cf.sh  >/dev/null 2>&1 && chmod +x cf.sh && ./cf.sh > /dev/null 2>&1
-        rm -f /root/cf.sh /root/cf-02.sh eror.zip
+SUB="ganti"
+DOMAIN="domainlu.com"
+echo "$SUB.$DOMAIN" > /etc/xray/domain
+echo "$SUB.$DOMAIN" > /root/domain
+echo "IP=$SUB.$DOMAIN" > /var/lib/kyt/ipvps.conf
     fi
     clear
 }
