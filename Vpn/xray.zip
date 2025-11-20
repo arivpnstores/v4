@@ -1,6 +1,4 @@
 #!/bin/bash
-wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/Fls/http -O /usr/bin/http
-cekhttp=$(cat /usr/bin/http)
 Green="\e[92;1m"
 RED="\033[1;31m"
 YELLOW="\033[33m"
