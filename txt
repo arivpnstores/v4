@@ -1164,4 +1164,5 @@ echo -e "\033[96m==========================\033[0m"
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
+
 rm -rf /root/install
