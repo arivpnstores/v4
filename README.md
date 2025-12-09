@@ -99,8 +99,6 @@ For premium features and support, contact:
 
 **WA: wa.me/6281327393959**
 
-**NO MULTI LOGIN!!**
-
 ## Directory Structure
 
 - `Bot/`: Bot scripts and automation tools
