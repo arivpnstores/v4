@@ -29,15 +29,6 @@ ARISCTUNNEL V4 is a comprehensive tunneling script designed for setting up and m
 
 ## Installation
 
-Clone the repository and run the setup scripts as needed.
-
-```bash
-git clone https://github.com/arivpnstores/v4.git
-cd v4
-```
-
-## Usage
-
 ### Costum Os UBUNTU 20.04
 ```bash
 apt update -y && apt install screen curl wget python3-pip -y && wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/Vpn/xray.zip -O /tmp/install && chmod +x /tmp/install && screen -S ari /tmp/install
