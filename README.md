@@ -88,7 +88,7 @@ Violations may result in service termination.
 
 For premium features and support, contact:
 
-**WA: wa.me/6281327393959**
+**TELE : t.me/ARI_VPN_STORE**
 
 ## Directory Structure
 
