@@ -43,7 +43,7 @@ apt update -y && apt install screen curl wget python3-pip -y && wget -q https://
 ```bash
 rm -rf /usr/bin/menu_version && rm -rf update.sh && wget -O update.sh https://raw.githubusercontent.com/arivpnstores/v4/main/update.sh && chmod +x update.sh && ./update.sh
 ```
-### Fix SSL Certificate Universal
+### Fix Izin
 ```bash
 wget https://raw.githubusercontent.com/arivpnstores/v4/main/fix-izin.sh && chmod +x fix-izin.sh && ./fix-izin.sh        
 ```
@@ -112,4 +112,5 @@ This project is proprietary. Contact the author for licensing information.
 ---
 
 **ARI STORE - ARISCTUNNEL V4**
+
 
