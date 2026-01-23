@@ -2,7 +2,9 @@
 
 **Final Script Tunneling by ARI STORE**
 
-![menu-v4.png](https://github.com/user-attachments/assets/346349c6-66d2-4406-b8c4-3fb1f1a45c5c)
+<p align="center">
+  <img src="ss.png" width="420">
+</p>
 
 ## Description
 
@@ -114,6 +116,7 @@ This project is proprietary. Contact the author for licensing information.
 ---
 
 **ARI STORE - ARISCTUNNEL V4**
+
 
 
 
