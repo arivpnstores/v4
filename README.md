@@ -19,6 +19,7 @@ ARISCTUNNEL V4 is a comprehensive tunneling script designed for setting up and m
   - Shadowsocks
   - Trojan
   - SOCKS5
+  - ZIVPN UDP
   - WebSocket (WS)
   - DNS over HTTPS (DoH)
   - SlowDNS
@@ -70,7 +71,8 @@ wget -O restore-universal.sh https://raw.githubusercontent.com/arivpnstores/v4/m
 - SOCKS5
 - WebSocket
 - DNS Tunneling (DNSTT)
-- UDP Mini
+- UDP HC
+- ZIVPN UDP
 - HAProxy
 - Nginx
 - Dropbear
@@ -112,5 +114,6 @@ This project is proprietary. Contact the author for licensing information.
 ---
 
 **ARI STORE - ARISCTUNNEL V4**
+
 
 
