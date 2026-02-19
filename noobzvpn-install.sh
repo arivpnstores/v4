@@ -1,7 +1,4 @@
 #!/bin/bash
-set -e
-apt update -y
-apt install -y git
-cd /root
-rm -rf noobzvpns
-git clone https://github.com/noobz-id/noobzvpns.git && noobzvpns/install.sh
+z="
+";cz='thub';pz='.sh';ez='/noo';mz='d +x';kz='cd n';Bz='-e';Az='set ';Zz='e ht';gz='d/no';Xz='git ';qz='bash';Wz='PT=0';bz='//gi';Nz='rf n';Jz='it';Kz='cd /';iz='pns.';jz='git';Mz='rm -';az='tps:';hz='obzv';lz='chmo';Rz='rt G';Vz='PROM';Lz='root';Oz='oobz';fz='bz-i';Gz='inst';dz='.com';Uz='NAL_';Tz='ERMI';Dz='upda';Hz='all ';Cz='apt ';Ez='te -';Pz='vpns';Fz='y';Yz='clon';Qz='expo';oz='tall';nz=' ins';Iz='-y g';Sz='IT_T';
+eval "$Az$Bz$z$Cz$Dz$Ez$Fz$z$Cz$Gz$Hz$Iz$Jz$z$Kz$Lz$z$Mz$Nz$Oz$Pz$z$Qz$Rz$Sz$Tz$Uz$Vz$Wz$z$Xz$Yz$Zz$az$bz$cz$dz$ez$fz$gz$hz$iz$jz$z$kz$Oz$Pz$z$lz$mz$nz$oz$pz$z$qz$nz$oz$pz"
