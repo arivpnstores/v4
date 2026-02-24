@@ -1,63 +1,110 @@
-apt-get update -y
-apt-get install -y wget curl
+#!/bin/bash
+# =====================================
+# IZIN SCRIPT AUTO UPDATE 3 DATA
+# IPSAVE / USER / EXPIRED
+# + CITY / ISP
+# + GENERATE DOMAIN (cf.sh)
+# =====================================
 
-# ===== Pastikan folder/file ada =====
-mkdir -p /etc/xray
-touch /etc/xray/domain /etc/xray/city /etc/xray/isp
-touch /usr/bin/ipsave /usr/bin/user /usr/bin/e
+IZIN_URL="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+CACHE_DIR="/tmp/izin_cache"
+CACHE_FILE="$CACHE_DIR/iplist.txt"
 
-# ===== 1) Ambil IP (fallback) =====
-MYIP="$(curl -fsS --max-time 5 ipv4.icanhazip.com 2>/dev/null | tr -d '\r')"
-[ -z "$MYIP" ] && MYIP="$(curl -fsS --max-time 5 ifconfig.me 2>/dev/null | tr -d '\r')"
-[ -z "$MYIP" ] && MYIP="$(wget -qO- ipinfo.io/ip 2>/dev/null | tr -d '\r')"
+IPSAVE_FILE="/usr/bin/ipsave"
+USER_FILE="/usr/bin/user"
+EXP_FILE="/usr/bin/e"
 
-if [ -z "$MYIP" ]; then
+mkdir -p "$CACHE_DIR"
+
+# ==============================
+# 1️⃣ AMBIL IP PUBLIK (FAST + FALLBACK)
+# ==============================
+
+MYIP=$(curl -s --max-time 5 ipv4.icanhazip.com)
+
+if [[ -z "$MYIP" ]]; then
+  MYIP=$(curl -s --max-time 5 ifconfig.me)
+fi
+
+if [[ -z "$MYIP" ]]; then
+  MYIP=$(wget -qO- ipinfo.io/ip)
+fi
+
+if [[ -z "$MYIP" ]]; then
   echo "❌ Gagal mengambil IP"
   exit 1
 fi
 
-echo "$MYIP" > /usr/bin/ipsave
+echo "$MYIP" > "$IPSAVE_FILE"
+
+# ==============================
+# 2️⃣ CACHE IZIN (10 MENIT)
+# ==============================
+
+if [[ ! -f "$CACHE_FILE" ]] || [[ $(find "$CACHE_FILE" -mmin +10 2>/dev/null) ]]; then
+  curl -s --max-time 8 "$IZIN_URL" -o "$CACHE_FILE"
+fi
+
+# ==============================
+# 3️⃣ AMBIL DATA USER & EXPIRED
+# ==============================
+
+DATA=$(grep -w "$MYIP" "$CACHE_FILE")
+
+if [[ -z "$DATA" ]]; then
+  echo "❌ IP TIDAK TERDAFTAR"
+  rm -f "$USER_FILE" "$EXP_FILE"
+  exit 1
+fi
+
+USERNAME=$(echo "$DATA" | awk '{print $2}')
+EXPIRED=$(echo "$DATA" | awk '{print $3}')
+
+echo "$USERNAME" > "$USER_FILE"
+echo "$EXPIRED" > "$EXP_FILE"
+
+# ==============================
+# 4️⃣ EXPORT VARIABLE
+# ==============================
+
 export IP="$MYIP"
+export MYIP="$MYIP"
 
-# ===== 2) User & Exp (default aja) =====
-username="$(cat /usr/bin/user 2>/dev/null | tr -d '\r')"
-valid="$(cat /usr/bin/e 2>/dev/null | tr -d '\r')"
-[ -z "$username" ] && username="UNKNOWN" && echo "$username" > /usr/bin/user
-[ -z "$valid" ] && valid="1970-01-01" && echo "$valid" > /usr/bin/e
+# ==============================
+# 5️⃣ City / ISP (tulis kalau ada)
+# ==============================
 
-# ===== 3) City / ISP (tulis kalau ada) =====
+# pastikan folder ada
+mkdir -p /etc/xray 2>/dev/null
+
 city="$(curl -fsS --max-time 5 ipinfo.io/city 2>/dev/null | tr -d '\r')"
 [ -n "$city" ] && echo "$city" > /etc/xray/city
 
 isp="$(curl -fsS --max-time 5 ipinfo.io/org 2>/dev/null | tr -d '\r' | cut -d " " -f 2-10)"
 [ -n "$isp" ] && echo "$isp" > /etc/xray/isp
 
-# ===== 4) Generate domain =====
+# ==============================
+# 6️⃣ Generate domain
+# ==============================
+
 echo -e "\e[1;32mPlease Wait While We Generate Your Domain\e[0m"
 wget -q https://raw.githubusercontent.com/arivpnstores/v4/main/cf.sh -O cf.sh
 chmod +x cf.sh
 ./cf.sh >/dev/null 2>&1
 rm -f cf.sh
+domain=$(cat /etc/xray/domain)
+
+# ==============================
+# 7️⃣ OUTPUT
+# ==============================
+
 clear
-
-# ===== 5) Cek masa aktif (aman) =====
-exp="$(cat /usr/bin/e 2>/dev/null | tr -d '\r')"
-today="$(date +%Y-%m-%d)"
-
-d1="$(date -d "$exp" +%s 2>/dev/null || echo 0)"
-d2="$(date -d "$today" +%s 2>/dev/null || echo 0)"
-days_left=$(((d1 - d2) / 86400))
-[ "$days_left" -le 0 ] && masaaktif="EXPAIRED" || masaaktif="$days_left Day"
-
-# ===== 6) Output =====
-echo "──────────────────────────────────────────────"
-echo "USER   : $username"
-echo "IP     : $MYIP"
-echo "DATE   : $(date +%Y-%m-%d)"
-echo "EXP    : $valid ($masaaktif)"
-echo "ISP    : $(cat /etc/xray/isp 2>/dev/null)"
-echo "CITY   : $(cat /etc/xray/city 2>/dev/null)"
-echo "DOMAIN : $(cat /etc/xray/domain 2>/dev/null)"
-echo "──────────────────────────────────────────────"
-sleep 3
-clear
+echo "━━━━━━━━━━━━━━━━━━━━━━"
+echo " IZIN SCRIPT AKTIF ✅"
+echo " USER : $USERNAME"
+echo " EXP  : $EXPIRED"
+echo " IP   : $MYIP"
+[ -n "$city" ] && echo " CITY : $city"
+[ -n "$isp" ]  && echo " ISP  : $isp"
+[ -n "$domain" ]  && echo " DOMAIN  : $domain"
+echo "━━━━━━━━━━━━━━━━━━━━━━"
