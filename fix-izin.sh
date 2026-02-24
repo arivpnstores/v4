@@ -1,4 +1,139 @@
-#!/bin/bash
-z="
-";DDz='RED=';CDz='EXPI';WBz=' the';uBz='AVE_';ABz='mkdi';Iz='cont';fDz=' "━━';jCz=' TER';Bz='_URL';tCz='cho ';jDz='SCRI';ZDz='P="$';LBz='e 5 ';uz='EXP_';Nz='ores';tBz='$IPS';Tz='E_DI';lDz='KTIF';UCz='URL"';KDz='rint';sBz=' > "';Gz='thub';TBz=' "$M';ADz='t $2';RCz='me 8';nCz='f "$';mDz=' ✅"';aBz='.me)';bBz='fi';sDz=': $E';Wz='izin';Yz='he"';HBz='url ';fCz=' "$D';gBz='nfo.';ZBz='nfig';ez='plis';KCz=') ]]';qz='_FIL';DCz='find';cBz='=$(w';aCz='rep ';Xz='_cac';cCz='$MYI';MBz='ipv4';HDz='A" |';oz='"';QCz='x-ti';iz='VE_F';wCz='| aw';Lz='ariv';LDz=' $3}';CCz='[ $(';CBz=' "$C';lBz='Gaga';Sz='CACH';GDz='$DAT';gDz='━━━━';eDz='r';rBz=' 1';nDz=' " U';JCz='null';fBz=' ipi';wBz='-f "';jBz='echo';Az='IZIN';ACz=' ]] ';SDz='LE"';kDz='PT A';vDz=': $M';iCz='IDAK';ICz='dev/';TCz='ZIN_';rCz='NAME';Mz='pnst';uDz='P   ';kBz=' "❌ ';vBz='[ ! ';Zz='E_FI';Ez='//ra';UDz='XPIR';SBz='[ -z';YDz='rt I';VDz='ED" ';ECz='E" -';PBz='ip.c';yBz='ILE"';SCz=' "$I';WCz='"$CA';Pz='n/ma';eCz=')';Vz='tmp/';YCz='DATA';bCz='-w "';Jz='ent.';az='LE="';mz='n/ip';Uz='R="/';Oz='/izi';XBz='n';VCz=' -o ';oBz='bil ';rDz='XP  ';dBz='get ';nz='save';fz='t.tx';gCz='ATA"';LCz='; th';KBz='-tim';sCz='=$(e';Kz='com/';RBz='if [';hDz=' " I';ODz='SERN';ZCz='=$(g';bDz='YIP=';qBz='exit';xz='sr/b';tDz='ED"';bz='$CAC';oCz='E" "';FCz='mmin';WDz='> "$';pz='USER';BBz='r -p';xBz='HE_F';dDz='clea';Dz='tps:';YBz='ifco';IBz='-s -';MCz='en';pBz='IP"';RDz='R_FI';lCz='AR"';pCz='$EXP';rz='E="/';XCz='CHE_';hz='IPSA';uCz='"$DA';iBz='p)';yz='in/e';EBz='_DIR';oDz='SER ';vz='FILE';sz='usr/';Qz='in/i';EDz='$(ec';kCz='DAFT';dCz='P" "';jz='ILE=';MDz=''\'')';UBz='YIP"';NBz='.ica';GBz='=$(c';gz='t"';mBz='l me';FDz='ho "';BCz='|| [';BDz='}'\'')';pDz=': $U';qDz=' " E';vCz='TA" ';xCz='k '\''{';Rz='p"';GCz=' +10';mCz='rm -';nBz='ngam';hCz='IP T';IDz=' awk';QDz='$USE';iDz='ZIN ';kz='"/us';eBz='-qO-';cDz='"$MY';JDz=' '\''{p';VBz=' ]];';TDz=' "$E';lz='r/bi';OCz=' -s ';FBz='MYIP';QBz='om)';PCz='--ma';tz='bin/';DBz='ACHE';XDz='expo';dz='IR/i';HCz=' 2>/';Cz='="ht';qCz='E"';OBz='nhaz';hBz='io/i';JBz='-max';PDz='AME"';wz='="/u';Hz='user';yCz='prin';NCz='curl';aDz='rt M';NDz=' "$U';Fz='w.gi';cz='HE_D';
-eval "$Az$Bz$Cz$Dz$Ez$Fz$Gz$Hz$Iz$Jz$Kz$Lz$Mz$Nz$Oz$Pz$Qz$Rz$z$Sz$Tz$Uz$Vz$Wz$Xz$Yz$z$Sz$Zz$az$bz$cz$dz$ez$fz$gz$z$hz$iz$jz$kz$lz$mz$nz$oz$z$pz$qz$rz$sz$tz$Hz$oz$z$uz$vz$wz$xz$yz$oz$z$ABz$BBz$CBz$DBz$EBz$oz$z$FBz$GBz$HBz$IBz$JBz$KBz$LBz$MBz$NBz$OBz$PBz$QBz$z$RBz$SBz$TBz$UBz$VBz$WBz$XBz$z$FBz$GBz$HBz$IBz$JBz$KBz$LBz$YBz$ZBz$aBz$z$bBz$z$RBz$SBz$TBz$UBz$VBz$WBz$XBz$z$FBz$cBz$dBz$eBz$fBz$gBz$hBz$iBz$z$bBz$z$RBz$SBz$TBz$UBz$VBz$WBz$XBz$z$jBz$kBz$lBz$mBz$nBz$oBz$pBz$z$qBz$rBz$z$bBz$z$jBz$TBz$UBz$sBz$tBz$uBz$vz$oz$z$RBz$vBz$wBz$bz$xBz$yBz$ACz$BCz$CCz$DCz$CBz$DBz$qz$ECz$FCz$GCz$HCz$ICz$JCz$KCz$LCz$MCz$z$NCz$OCz$PCz$QCz$RCz$SCz$TCz$UCz$VCz$WCz$XCz$vz$oz$z$bBz$z$YCz$ZCz$aCz$bCz$cCz$dCz$bz$xBz$yBz$eCz$z$RBz$SBz$fCz$gCz$VBz$WBz$XBz$z$jBz$kBz$hCz$iCz$jCz$kCz$lCz$z$mCz$nCz$pz$qz$oCz$pCz$qz$qCz$z$qBz$rBz$z$bBz$z$pz$rCz$sCz$tCz$uCz$vCz$wCz$xCz$yCz$ADz$BDz$z$CDz$DDz$EDz$FDz$GDz$HDz$IDz$JDz$KDz$LDz$MDz$z$jBz$NDz$ODz$PDz$sBz$QDz$RDz$SDz$z$jBz$TDz$UDz$VDz$WDz$uz$vz$oz$z$XDz$YDz$ZDz$FBz$oz$z$XDz$aDz$bDz$cDz$pBz$z$dDz$eDz$z$jBz$fDz$gDz$gDz$gDz$gDz$gDz$oz$z$jBz$hDz$iDz$jDz$kDz$lDz$mDz$z$jBz$nDz$oDz$pDz$ODz$PDz$z$jBz$qDz$rDz$sDz$UDz$tDz$z$jBz$hDz$uDz$vDz$UBz$z$jBz$fDz$gDz$gDz$gDz$gDz$gDz$oz"
+apt-get update -y
+apt install -y wget curl
+
+# =====================================
+# IZIN + AUTO UPDATE DATA
+# IPSAVE / USER / EXPIRED + CITY / ISP
+# =====================================
+
+IZIN_URL="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+CACHE_DIR="/tmp/izin_cache"
+CACHE_FILE="$CACHE_DIR/iplist.txt"
+
+mkdir -p "$CACHE_DIR"
+
+######################################
+# ALL DATA SAVE
+######################################
+
+# --- AMBIL IP (FAST + FALLBACK)
+IPSAVE=$(curl -sS --max-time 5 ipv4.icanhazip.com)
+[ -z "$IPSAVE" ] && IPSAVE=$(curl -sS --max-time 5 ifconfig.me)
+[ -z "$IPSAVE" ] && IPSAVE=$(wget -qO- ipinfo.io/ip)
+[ -z "$IPSAVE" ] && IPSAVE="0.0.0.0"
+
+echo "$IPSAVE" > /usr/bin/ipsave
+MYIP="$IPSAVE"
+export IP="$MYIP"
+
+######################################
+# CACHE IZIN (10 MENIT)
+######################################
+if [ ! -s "$CACHE_FILE" ] || find "$CACHE_FILE" -mmin +10 >/dev/null 2>&1; then
+  curl -sS --max-time 8 "$IZIN_URL" -o "$CACHE_FILE"
+fi
+
+# kalau cache gagal keisi
+if [ ! -s "$CACHE_FILE" ]; then
+  echo "❌ Gagal ambil data izin"
+  exit 1
+fi
+
+######################################
+# AMBIL USER & EXPIRED DARI CACHE
+######################################
+DATA=$(awk -v ip="$MYIP" '$1==ip{print; exit}' "$CACHE_FILE")
+
+if [ -z "$DATA" ]; then
+  echo "❌ IP TIDAK TERDAFTAR"
+  rm -f /usr/bin/user /usr/bin/e
+  exit 1
+fi
+
+username=$(echo "$DATA" | awk '{print $2}')
+valid=$(echo "$DATA" | awk '{print $3}')
+
+[ -z "$username" ] && username="UNKNOWN"
+[ -z "$valid" ] && valid="1970-01-01"
+
+echo "$username" > /usr/bin/user
+echo "$valid" > /usr/bin/e
+
+######################################
+# CITY & ISP (anti kosong)
+######################################
+city=$(curl -s --max-time 5 ipinfo.io/city)
+[ -n "$city" ] && echo "$city" > /etc/xray/city
+
+isp=$(curl -s --max-time 5 ipinfo.io/org | cut -d " " -f 2-10)
+[ -n "$isp" ] && echo "$isp" > /etc/xray/isp
+
+######################################
+# GENERATE DOMAIN
+######################################
+echo -e "\e[1;32mPlease Wait While We Generate Your Domain\e[0m"
+wget https://raw.githubusercontent.com/arivpnstores/v4/main/cf.sh -O cf.sh >/dev/null 2>&1
+chmod +x cf.sh >/dev/null 2>&1
+./cf.sh
+rm -rf cf.sh >/dev/null 2>&1
+clear
+
+######################################
+exp=$(cat /usr/bin/e)
+today=$(date +%Y-%m-%d)
+
+# // DAYS LEFT
+d1=$(date -d "$exp" +%s 2>/dev/null)
+d2=$(date -d "$today" +%s 2>/dev/null)
+certifacate=$(((d1 - d2) / 86400))
+
+if [[ $certifacate -le 0 ]]; then
+  masaaktif="EXPAIRED"
+else
+  masaaktif="${certifacate} Day"
+fi
+
+date_list=$(date +%Y-%m-%d)
+ipsaya=$(cat /usr/bin/ipsave)
+
+checking_sc() {
+  if [[ "$date_list" < "$exp" ]]; then
+    : # masih aktif
+  else
+    banned_screen
+  fi
+}
+
+banned_screen() {
+  clear
+  echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+  echo -e "\033[41m          404 NOT FOUND AUTOSCRIPT          \033[0m"
+  echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+  echo -e ""
+  echo -e "            \033[91;1mPERMISSION DENIED !\033[0m"
+  echo -e "   \033[0;33mYour VPS\033[0m $ipsaya \033[0;33mHas been Banned\033[0m"
+  echo -e "     \033[0;33mBuy access permissions for scripts\033[0m"
+  echo -e "             \033[0;33mContact Admin :\033[0m"
+  echo -e "      \033[2;32mWhatsApp\033[0m https://wa.me/6281327393959"
+  echo -e "      \033[2;32mTelegram\033[0m https://t.me/ARI_VPN_STORE"
+  echo -e "\033[1;93m────────────────────────────────────────────\033[0m"
+  exit 1
+}
+
+checking_sc
+
+clear
+echo -e "${YELLOW}-------------------------------------${NC}"
+echo -e "\033[96;1m WELCOME TO SRICPT BY ARISCTUNNEL V4 ${NC}"
+echo -e "${YELLOW}-------------------------------------${NC}"
+echo -e "──────────────────────────────────────────────"
+echo -e "USER   : $username"
+echo -e "IP     : $MYIP"
+echo -e "DATE   : $date_list"
+echo -e "EXP    : $valid"
+echo -e "ISP    : $(cat /etc/xray/isp 2>/dev/null)"
+echo -e "CITY   : $(cat /etc/xray/city 2>/dev/null)"
+echo -e "DOMAIN : $(cat /etc/xray/domain 2>/dev/null)"
+echo -e "──────────────────────────────────────────────"
+sleep 3
+clear
