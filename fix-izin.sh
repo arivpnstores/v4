@@ -1,4 +1,110 @@
 #!/bin/bash
-z="
-";aDz='rt M';kz='"/us';WFz='4/ma';lDz=' -fs';QDz='$USE';yDz='d '\''\';SDz='LE"';LFz='s://';OBz='nhaz';ODz='SERN';DDz='RED=';qFz='━━━━';Iz='cont';fBz=' ipi';BEz='[ -n';VEz='ev/n';jEz=' ech';REz='info';YDz='rt I';qz='_FIL';mEz=' > /';ZEz=''\''\r'\''';HCz=' 2>/';oEz='xray';Sz='CACH';tz='bin/';eBz='-qO-';iz='VE_F';dEz='" -f';vz='FILE';UBz='YIP"';yFz='SER ';kDz='="$(';NBz='.ica';ECz='E" -';aCz='rep ';vFz='KTIF';FFz='Doma';FCz='mmin';iCz='IDAK';QGz='ain"';Bz='_URL';lCz='AR"';wDz='l | ';XFz='in/c';hz='IPSA';lFz='omai';ABz='mkdi';DCz='find';Yz='he"';nBz='ngam';Mz='pnst';DGz='XP  ';TFz='ivpn';RBz='if [';NEz=' --m';vCz='TA" ';Jz='ent.';KBz='-tim';EEz=' ] &';mz='n/ip';eDz='c/xr';vBz='[ ! ';WDz='> "$';rEz='.sh';NGz='OMAI';tEz='"\e[';iBz='p)';cFz='chmo';YFz='f.sh';TBz=' "$M';xCz='k '\''{';wCz='| aw';kEz='o "$';PCz='--ma';Fz='w.gi';Gz='thub';YEz=' -d ';fCz=' "$D';XEz='| tr';dCz='P" "';MBz='ipv4';UEz='2>/d';KCz=') ]]';yBz='ILE"';QEz='5 ip';BCz='|| [';OFz='ubus';gFz='./cf';ZDz='P="$';OGz='N : ';fz='t.tx';cz='HE_D';NCz='curl';jz='ILE=';sCz='=$(e';FDz='ho "';ZCz='=$(g';lBz='Gaga';EBz='_DIR';Lz='ariv';pFz=' "━━';xBz='HE_F';oz='"';HEz='y" >';MGz=' " D';KGz='SP  ';AGz='  : ';bEz='ut -';tBz='$IPS';fDz='ay 2';Xz='_cac';LEz='"$(c';XDz='expo';JEz='ity';PEz='ime ';VDz='ED" ';uEz='1;32';cBz='=$(w';QBz='om)';lz='r/bi';iEz='] &&';PBz='ip.c';nCz='f "$';rCz='NAME';CEz=' "$c';BGz='RNAM';UCz='URL"';dz='IR/i';kCz='DAFT';CDz='EXPI';tCz='cho ';Dz='tps:';UDz='XPIR';qEz='f cf';EGz='IRED';KFz='http';mFz='n)';HGz=' " C';BFz='e Ge';PFz='erco';MFz='raw.';HDz='A" |';vDz='/nul';Wz='izin';MEz='-fsS';RGz='slee';rFz=' " I';BDz='}'\'')';bFz='h';xEz='Wait';dDz=' /et';GFz='in\e';QFz='nten';gz='t"';FBz='MYIP';YBz='ifco';LGz='$isp';hDz='v/nu';eFz=' cf.';Nz='ores';qDz='pinf';QCz='x-ti';VCz=' -o ';IGz='ITY ';eCz=')';LDz=' $3}';GBz='=$(c';yz='in/e';aEz=' | c';nEz='etc/';LBz='e 5 ';dFz='d +x';EFz='our ';wBz='-f "';xDz='tr -';UFz='stor';WBz=' the';sEz=' -e ';dBz='get ';GEz='$cit';OCz=' -s ';oBz='bil ';mBz='l me';uFz='PT A';WCz='"$CA';CGz=' " E';JBz='-max';SGz='p 2';wEz='ase ';iFz='in=$';nz='save';Zz='E_FI';gDz='>/de';Rz='p"';Qz='in/i';uBz='AVE_';AFz='le W';EDz='$(ec';KDz='rint';xz='sr/b';yCz='prin';Tz='E_DI';SFz='m/ar';uCz='"$DA';bBz='fi';sBz=' > "';ADz='t $2';CBz=' "$C';SCz=' "$I';LCz='; th';qCz='E"';TEz='org ';jCz=' TER';IFz='wget';NDz=' "$U';DBz='ACHE';Az='IZIN';oFz='r';oDz='time';JDz=' '\''{p';ZFz=' -O ';GGz='P"';mDz='S --';kBz=' "❌ ';Ez='//ra';nDz='max-';xFz=' " U';tFz='SCRI';MCz='en';FGz='P   ';VFz='es/v';NFz='gith';Hz='user';ez='plis';CFz='nera';YCz='DATA';XCz='CHE_';eEz=' 2-1';pCz='$EXP';pz='USER';iDz='ll';uDz='/dev';JGz='y"';jFz='(cat';PGz='$dom';kFz='ay/d';SEz='.io/';RCz='me 8';sFz='ZIN ';AEz='r'\'')"';rz='E="/';ACz=' ]] ';hEz='sp" ';tDz='y 2>';SBz='[ -z';gCz='ATA"';Vz='tmp/';XBz='n';pDz=' 5 i';cEz='d " ';hFz='doma';hCz='IP T';DEz='ity"';vEz='mPle';HFz='[0m"';MDz=''\'')';CCz='[ $(';VBz=' ]];';RDz='R_FI';pEz='/isp';Cz='="ht';IBz='-s -';cCz='$MYI';bCz='-w "';yEz=' Whi';Kz='com/';IEz='ay/c';uz='EXP_';RFz='t.co';cDz='"$MY';Uz='R="/';fFz='sh';fEz='0)"';mCz='rm -';lEz='isp"';DFz='te Y';bz='$CAC';TDz=' "$E';HBz='url ';az='LE="';nFz='clea';wFz=' ✅"';ZBz='nfig';KEz='isp=';rBz=' 1';Pz='n/ma';GCz=' +10';ICz='dev/';bDz='YIP=';sz='usr/';WEz='ull ';aFz='cf.s';FEz='& ec';gBz='nfo.';OEz='ax-t';IDz=' awk';TCz='ZIN_';hBz='io/i';sDz='/cit';PDz='AME"';BBz='r -p';oCz='E" "';GDz='$DAT';gEz=' "$i';rDz='o.io';wz='="/u';pBz='IP"';jBz='echo';qBz='exit';aBz='.me)';JCz='null';JFz=' -q ';Oz='/izi';jDz='city';
-eval "$Az$Bz$Cz$Dz$Ez$Fz$Gz$Hz$Iz$Jz$Kz$Lz$Mz$Nz$Oz$Pz$Qz$Rz$z$Sz$Tz$Uz$Vz$Wz$Xz$Yz$z$Sz$Zz$az$bz$cz$dz$ez$fz$gz$z$hz$iz$jz$kz$lz$mz$nz$oz$z$pz$qz$rz$sz$tz$Hz$oz$z$uz$vz$wz$xz$yz$oz$z$ABz$BBz$CBz$DBz$EBz$oz$z$FBz$GBz$HBz$IBz$JBz$KBz$LBz$MBz$NBz$OBz$PBz$QBz$z$RBz$SBz$TBz$UBz$VBz$WBz$XBz$z$FBz$GBz$HBz$IBz$JBz$KBz$LBz$YBz$ZBz$aBz$z$bBz$z$RBz$SBz$TBz$UBz$VBz$WBz$XBz$z$FBz$cBz$dBz$eBz$fBz$gBz$hBz$iBz$z$bBz$z$RBz$SBz$TBz$UBz$VBz$WBz$XBz$z$jBz$kBz$lBz$mBz$nBz$oBz$pBz$z$qBz$rBz$z$bBz$z$jBz$TBz$UBz$sBz$tBz$uBz$vz$oz$z$RBz$vBz$wBz$bz$xBz$yBz$ACz$BCz$CCz$DCz$CBz$DBz$qz$ECz$FCz$GCz$HCz$ICz$JCz$KCz$LCz$MCz$z$NCz$OCz$PCz$QCz$RCz$SCz$TCz$UCz$VCz$WCz$XCz$vz$oz$z$bBz$z$YCz$ZCz$aCz$bCz$cCz$dCz$bz$xBz$yBz$eCz$z$RBz$SBz$fCz$gCz$VBz$WBz$XBz$z$jBz$kBz$hCz$iCz$jCz$kCz$lCz$z$mCz$nCz$pz$qz$oCz$pCz$qz$qCz$z$qBz$rBz$z$bBz$z$pz$rCz$sCz$tCz$uCz$vCz$wCz$xCz$yCz$ADz$BDz$z$CDz$DDz$EDz$FDz$GDz$HDz$IDz$JDz$KDz$LDz$MDz$z$jBz$NDz$ODz$PDz$sBz$QDz$RDz$SDz$z$jBz$TDz$UDz$VDz$WDz$uz$vz$oz$z$XDz$YDz$ZDz$FBz$oz$z$XDz$aDz$bDz$cDz$pBz$z$ABz$BBz$dDz$eDz$fDz$gDz$hDz$iDz$z$jDz$kDz$NCz$lDz$mDz$nDz$oDz$pDz$qDz$rDz$sDz$tDz$uDz$vDz$wDz$xDz$yDz$AEz$z$BEz$CEz$DEz$EEz$FEz$FDz$GEz$HEz$dDz$eDz$IEz$JEz$z$KEz$LEz$HBz$MEz$NEz$OEz$PEz$QEz$REz$SEz$TEz$UEz$VEz$WEz$XEz$YEz$ZEz$aEz$bEz$cEz$dEz$eEz$fEz$z$BEz$gEz$hEz$iEz$jEz$kEz$lEz$mEz$nEz$oEz$pEz$z$mCz$qEz$rEz$z$jBz$sEz$tEz$uEz$vEz$wEz$xEz$yEz$AFz$BFz$CFz$DFz$EFz$FFz$GFz$HFz$z$IFz$JFz$KFz$LFz$MFz$NFz$OFz$PFz$QFz$RFz$SFz$TFz$UFz$VFz$WFz$XFz$YFz$ZFz$aFz$bFz$z$cFz$dFz$eFz$fFz$z$gFz$rEz$z$hFz$iFz$jFz$dDz$eDz$kFz$lFz$mFz$z$nFz$oFz$z$jBz$pFz$qFz$qFz$qFz$qFz$qFz$oz$z$jBz$rFz$sFz$tFz$uFz$vFz$wFz$z$jBz$xFz$yFz$AGz$QDz$BGz$qCz$z$jBz$CGz$DGz$AGz$pCz$EGz$oz$z$jBz$rFz$FGz$AGz$cCz$GGz$z$jBz$HGz$IGz$AGz$GEz$JGz$z$jBz$rFz$KGz$AGz$LGz$oz$z$jBz$MGz$NGz$OGz$PGz$QGz$z$jBz$pFz$qFz$qFz$qFz$qFz$qFz$oz$z$RGz$SGz$z$nFz$oFz"
+# =====================================
+# IZIN SCRIPT AUTO UPDATE 3 DATA
+# IPSAVE / USER / EXPIRED
+# + CITY / ISP
+# + GENERATE DOMAIN (cf.sh)
+# =====================================
+
+IZIN_URL="https://raw.githubusercontent.com/arivpnstores/izin/main/ip"
+CACHE_DIR="/tmp/izin_cache"
+CACHE_FILE="$CACHE_DIR/iplist.txt"
+
+IPSAVE_FILE="/usr/bin/ipsave"
+USER_FILE="/usr/bin/user"
+EXP_FILE="/usr/bin/e"
+
+mkdir -p "$CACHE_DIR"
+
+# ==============================
+# 1️⃣ AMBIL IP PUBLIK (FAST + FALLBACK)
+# ==============================
+
+MYIP=$(curl -s --max-time 5 ipv4.icanhazip.com)
+
+if [[ -z "$MYIP" ]]; then
+  MYIP=$(curl -s --max-time 5 ifconfig.me)
+fi
+
+if [[ -z "$MYIP" ]]; then
+  MYIP=$(wget -qO- ipinfo.io/ip)
+fi
+
+if [[ -z "$MYIP" ]]; then
+  echo "❌ Gagal mengambil IP"
+  exit 1
+fi
+
+echo "$MYIP" > "$IPSAVE_FILE"
+
+# ==============================
+# 2️⃣ CACHE IZIN (10 MENIT)
+# ==============================
+
+if [[ ! -f "$CACHE_FILE" ]] || [[ $(find "$CACHE_FILE" -mmin +10 2>/dev/null) ]]; then
+  curl -s --max-time 8 "$IZIN_URL" -o "$CACHE_FILE"
+fi
+
+# ==============================
+# 3️⃣ AMBIL DATA USER & EXPIRED
+# ==============================
+
+DATA=$(grep -w "$MYIP" "$CACHE_FILE")
+
+if [[ -z "$DATA" ]]; then
+  echo "❌ IP TIDAK TERDAFTAR"
+  rm -f "$USER_FILE" "$EXP_FILE"
+  exit 1
+fi
+
+USERNAME=$(echo "$DATA" | awk '{print $2}')
+EXPIRED=$(echo "$DATA" | awk '{print $3}')
+
+echo "$USERNAME" > "$USER_FILE"
+echo "$EXPIRED" > "$EXP_FILE"
+
+# ==============================
+# 4️⃣ EXPORT VARIABLE
+# ==============================
+
+export IP="$MYIP"
+export MYIP="$MYIP"
+
+# ==============================
+# 5️⃣ City / ISP (tulis kalau ada)
+# ==============================
+
+# pastikan folder ada
+mkdir -p /etc/xray 2>/dev/null
+
+city="$(curl -fsS --max-time 5 ipinfo.io/city 2>/dev/null | tr -d '\r')"
+[ -n "$city" ] && echo "$city" > /etc/xray/city
+
+isp="$(curl -fsS --max-time 5 ipinfo.io/org 2>/dev/null | tr -d '\r' | cut -d " " -f 2-10)"
+[ -n "$isp" ] && echo "$isp" > /etc/xray/isp
+
+# ==============================
+# 6️⃣ Ambil domain existing (tanpa generate ulang)
+# ==============================
+if [[ -f /etc/xray/domain ]]; then
+  domain=$(cat /etc/xray/domain)
+else
+  domain="Tidak ada domain"
+fi
+
+# ==============================
+# 7️⃣ OUTPUT
+# ==============================
+
+clear
+echo "━━━━━━━━━━━━━━━━━━━━━━"
+echo " IZIN SCRIPT AKTIF ✅"
+echo " USER   : $USERNAME"
+echo " EXP    : $EXPIRED"
+echo " IP     : $MYIP"
+echo " CITY   : $city"
+echo " ISP    : $isp"
+echo " DOMAIN : $domain"
+echo "━━━━━━━━━━━━━━━━━━━━━━"
+sleep 2
+clear
