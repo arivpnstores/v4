@@ -1,4 +1,63 @@
 #!/bin/bash
-z="
-";ODz=' && ';IBz=' "🌐';pEz='[ "$';QFz='N}" ';BBz='ubdo';rCz='/api';RBz=' -sL';tCz='udfl';hz='"tes';CEz='Memb';EEz='DNS ';VDz='us D';fz='.id"';QCz='}" |';jz='RAND';Az='set ';Zz='DOMA';vz='echo';IFz='Gaga';VEz='":\"';wDz='/${R';oz='IP=$';qBz='mail';VBz='://a';VCz='null';vCz='com/';HFz='else';LCz='id'\'')';DCz='atio';nEz='fals';dBz='zone';tEz=' jq ';gBz='{DOM';bz='alha';MEz='s/${';pBz='th-E';FFz='→ ${';hEz='\"tt';aDz='${DO';FCz='on" ';PFz='jq .';yEz='true';eBz='s?na';dCz='k di';ez='.web';bDz='MAIN';nBz='-H "';eEz='cont';ECz='n/js';WDz='NS l';mCz='rl -';fDz='LETE';Oz='EY="';mDz='.com';bFz=' /va';mEz='d\":';OFz='" | ';lBz='ve" ';JCz='sult';GDz='type';tDz='/dns';jBz='tus=';DBz=': ${';NEz='}/dn';dz='liah';cBz='/v4/';Vz='b93e';WEz='A\",';PDz='"${R';mBz='\';lCz='$(cu';XEz='\"na';gCz='exit';yz='pros';uCz='are.';xEz=''\'')" ';VFz='in';OEz='s_re';Nz='CF_K';TCz='E}" ';aBz='m/cl';kFz='ktif';BEz=' "➕ ';XCz='; th';Yz='b"';xBz='Cont';TFz='ray/';Rz='f262';sCz='.clo';ACz='Type';bEz='}.${';RCz='| "$';kBz='acti';JFz='l me';CBz='main';wEz='cess';pDz='v4/z';WCz='" ]]';oDz='ent/';jEz='120,';aFz='}" >';YEz='me\"';qz=' /us';MCz='"';FDz='rds?';BCz=': ap';KCz='[0].';wBz='}" \';pCz='"htt';LDz='" \';fCz='kan!';tBz='ey: ';TEz='{\"t';NDz='RD}"';PBz='="$(';qDz='ones';rDz='/${Z';AFz=' "✔️';BDz='${ZO';fBz='me=$';HBz='N}"';Ez='l';UBz='ttps';MFz='S!"';HEz='NEW=';kz='OM %';qEz='(ech';lEz='oxie';tz='save';gEz='}\",';YCz='en';aCz='Zone';Gz='D="a';Wz='8849';yCz='4/zo';eFz='t/ip';UDz='ghap';fEz='ent\';sDz='ONE}';LBz='ik: ';uEz='-r '\''';Xz='85ed';hDz='tps:';rEz='o "$';XFz='oot/';hFz=' "🎉';iBz='&sta';RFz='> /e';hCz=' 1';WBz='pi.c';JBz=' IP ';FEz='baru';wz=' "🔎';UCz='== "';DDz='dns_';Pz='3a9c';OCz='[ -z';iCz='fi';EFz='IN} ';NBz='}"';cDz='})..';SFz='tc/x';eCz='temu';iz='t$((';jCz='RECO';aEz='{SUB';Mz='m"';XDz='ama ';ZEz=':\"$';Dz='efai';ADz='nes/';dFz='b/ky';ZBz='e.co';GEz='..."';XBz='loud';iFz=' Sub';kEz='\"pr';Tz='15d5';HCz=' -r ';sEz='{NEW';GCz='| jq';Lz='l.co';ZFz='=${S';nz=')"';jDz='i.cl';MDz='[ -n';EBz='SUB}';FBz='.${D';xz=' Mem';Qz='22d2';KEz='-sLX';Uz='8da5';az='IN="';WFz='> /r';CDz='NE}/';QDz='ECOR';IDz='ame=';EDz='reco';ZCz=' "❌ ';dEz='",\"';ICz=''\''.re';PCz=' "${';Fz='CF_I';cEz='IN}\';Hz='ribu';YFz=' "IP';cFz='r/li';lz=' 10 ';bBz='ient';gFz='conf';xCz='nt/v';SDz=' "♻️';CFz='hasi';DEz='uat ';yDz='v/nu';Iz='ncar';CCz='plic';wCz='clie';QBz='curl';UFz='doma';YBz='flar';uDz='_rec';bCz=' ID ';HDz='=A&n';AEz='ll';Bz='-euo';uBz='${CF';qCz='ps:/';Jz='285@';UEz='ype\';DFz='l: $';oBz='X-Au';vBz='_KEY';oEz='e}")';SCz='{ZON';PEz='cord';cCz='tida';yBz='ent-';MBz='${IP';QEz='s" \';iDz='//ap';oCz='GET ';YDz='(${S';nDz='/cli';dDz='."';JDz='${SU';NCz='if [';rBz='D}" ';uz=')';ABz='es s';REz='--da';LEz=' POS';jFz='in a';vEz='.suc';ZDz='UB}.';KFz='mbua';GFz='IP}"';sz='n/ip';vDz='ords';NFz='NEW}';GBz='OMAI';Sz='547b';pz='(cat';BFz=' Ber';cz='mdul';TBz='T "h';nCz='sLX ';Kz='gmai';rz='r/bi';LFz='t DN';kCz='RD="';TDz=' Men';lDz='lare';IEz='"$(c';hBz='AIN}';kDz='oudf';SEz='ta "';SBz='X GE';iEz='l\":';xDz='>/de';gDz=' "ht';eDz='X DE';Cz=' pip';mz='+ 1)';RDz='!= "';sBz='th-K';KBz='publ';JEz='url ';fFz='vps.';KDz='B}.$';OBz='ZONE';gz='SUB=';
-eval "$Az$Bz$Cz$Dz$Ez$z$Fz$Gz$Hz$Iz$Jz$Kz$Lz$Mz$z$Nz$Oz$Pz$Qz$Rz$Sz$Tz$Uz$Vz$Wz$Xz$Yz$z$Zz$az$bz$cz$dz$ez$fz$z$gz$hz$iz$jz$kz$lz$mz$nz$z$oz$pz$qz$rz$sz$tz$uz$z$vz$wz$xz$yz$ABz$BBz$CBz$DBz$EBz$FBz$GBz$HBz$z$vz$IBz$JBz$KBz$LBz$MBz$NBz$z$OBz$PBz$QBz$RBz$SBz$TBz$UBz$VBz$WBz$XBz$YBz$ZBz$aBz$bBz$cBz$dBz$eBz$fBz$gBz$hBz$iBz$jBz$kBz$lBz$mBz$z$nBz$oBz$pBz$qBz$DBz$Fz$rBz$mBz$z$nBz$oBz$sBz$tBz$uBz$vBz$wBz$z$nBz$xBz$yBz$ACz$BCz$CCz$DCz$ECz$FCz$GCz$HCz$ICz$JCz$KCz$LCz$MCz$z$NCz$OCz$PCz$OBz$QCz$RCz$SCz$TCz$UCz$VCz$WCz$XCz$YCz$z$vz$ZCz$aCz$bCz$cCz$dCz$eCz$fCz$MCz$z$gCz$hCz$z$iCz$z$jCz$kCz$lCz$mCz$nCz$oCz$pCz$qCz$rCz$sCz$tCz$uCz$vCz$wCz$xCz$yCz$ADz$BDz$CDz$DDz$EDz$FDz$GDz$HDz$IDz$JDz$KDz$gBz$hBz$LDz$z$nBz$oBz$pBz$qBz$DBz$Fz$rBz$mBz$z$nBz$oBz$sBz$tBz$uBz$vBz$wBz$z$nBz$xBz$yBz$ACz$BCz$CCz$DCz$ECz$FCz$GCz$HCz$ICz$JCz$KCz$LCz$MCz$z$NCz$MDz$PCz$jCz$NDz$ODz$PDz$QDz$rBz$RDz$VCz$WCz$XCz$YCz$z$vz$SDz$TDz$UDz$VDz$WDz$XDz$YDz$ZDz$aDz$bDz$cDz$dDz$z$QBz$RBz$eDz$fDz$gDz$hDz$iDz$jDz$kDz$lDz$mDz$nDz$oDz$pDz$qDz$rDz$sDz$tDz$uDz$vDz$wDz$QDz$rBz$mBz$z$nBz$oBz$pBz$qBz$DBz$Fz$rBz$mBz$z$nBz$oBz$sBz$tBz$uBz$vBz$wBz$z$nBz$xBz$yBz$ACz$BCz$CCz$DCz$ECz$FCz$xDz$yDz$AEz$z$iCz$z$vz$BEz$CEz$DEz$EEz$FEz$GEz$z$HEz$IEz$JEz$KEz$LEz$TBz$UBz$VBz$WBz$XBz$YBz$ZBz$aBz$bBz$cBz$dBz$MEz$OBz$NEz$OEz$PEz$QEz$z$nBz$oBz$pBz$qBz$DBz$Fz$rBz$mBz$z$nBz$oBz$sBz$tBz$uBz$vBz$wBz$z$nBz$xBz$yBz$ACz$BCz$CCz$DCz$ECz$FCz$mBz$z$REz$SEz$TEz$UEz$VEz$WEz$XEz$YEz$ZEz$aEz$bEz$Zz$cEz$dEz$eEz$fEz$VEz$MBz$gEz$hEz$iEz$jEz$kEz$lEz$mEz$nEz$oEz$MCz$z$NCz$pEz$qEz$rEz$sEz$QCz$tEz$uEz$vEz$wEz$xEz$UCz$yEz$WCz$XCz$YCz$z$vz$AFz$BFz$CFz$DFz$aEz$bEz$Zz$EFz$FFz$GFz$z$HFz$z$vz$ZCz$IFz$JFz$KFz$LFz$MFz$z$vz$PCz$NFz$OFz$PFz$z$gCz$hCz$z$iCz$z$vz$PCz$EBz$FBz$GBz$QFz$RFz$SFz$TFz$UFz$VFz$z$vz$PCz$EBz$FBz$GBz$QFz$WFz$XFz$UFz$VFz$z$vz$YFz$ZFz$ZDz$aDz$bDz$aFz$bFz$cFz$dFz$eFz$fFz$gFz$z$vz$hFz$iFz$UFz$jFz$kFz$DBz$EBz$FBz$GBz$HBz"
+set -euo pipefail
+
+CF_ID="aribuncar285@gmail.com"
+CF_KEY="3a9c22d2f262547b15d58da5b93e884985edb"
+DOMAIN="alhamdulliah.web.id"
+
+# Random subdomain test1 - test10 (1x saja)
+SUB="test$((RANDOM % 10 + 1))"
+
+IP=$(cat /usr/bin/ipsave)
+
+echo "🔎 Memproses subdomain: ${SUB}.${DOMAIN}"
+echo "🌐 IP publik: ${IP}"
+
+# Ambil Zone ID
+ZONE="$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones?name=${DOMAIN}&status=active" \
+  -H "X-Auth-Email: ${CF_ID}" \
+  -H "X-Auth-Key: ${CF_KEY}" \
+  -H "Content-Type: application/json" | jq -r '.result[0].id')"
+
+if [[ -z "${ZONE}" || "${ZONE}" == "null" ]]; then
+  echo "❌ Zone ID tidak ditemukan!"
+  exit 1
+fi
+
+# Cek apakah record sudah ada
+RECORD="$(curl -sLX GET "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records?type=A&name=${SUB}.${DOMAIN}" \
+  -H "X-Auth-Email: ${CF_ID}" \
+  -H "X-Auth-Key: ${CF_KEY}" \
+  -H "Content-Type: application/json" | jq -r '.result[0].id')"
+
+# Hapus jika ada
+if [[ -n "${RECORD}" && "${RECORD}" != "null" ]]; then
+  echo "♻️ Menghapus DNS lama (${SUB}.${DOMAIN})..."
+  curl -sLX DELETE "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records/${RECORD}" \
+    -H "X-Auth-Email: ${CF_ID}" \
+    -H "X-Auth-Key: ${CF_KEY}" \
+    -H "Content-Type: application/json" >/dev/null
+fi
+
+# Buat DNS baru
+echo "➕ Membuat DNS baru..."
+NEW="$(curl -sLX POST "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_records" \
+  -H "X-Auth-Email: ${CF_ID}" \
+  -H "X-Auth-Key: ${CF_KEY}" \
+  -H "Content-Type: application/json" \
+  --data "{\"type\":\"A\",\"name\":\"${SUB}.${DOMAIN}\",\"content\":\"${IP}\",\"ttl\":120,\"proxied\":false}")"
+
+if [[ "$(echo "${NEW}" | jq -r '.success')" == "true" ]]; then
+  echo "✔️ Berhasil: ${SUB}.${DOMAIN} → ${IP}"
+else
+  echo "❌ Gagal membuat DNS!"
+  echo "${NEW}" | jq .
+  exit 1
+fi
+
+# Simpan domain
+echo "${SUB}.${DOMAIN}" > /etc/xray/domain
+echo "${SUB}.${DOMAIN}" > /root/domain
+echo "IP=${SUB}.${DOMAIN}" > /var/lib/kyt/ipvps.conf
+
+echo "🎉 Subdomain aktif: ${SUB}.${DOMAIN}"
