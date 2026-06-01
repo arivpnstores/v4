@@ -1,6 +1,6 @@
 # ARISCTUNNEL V4
 
-**Final Script Tunneling by ARI STORE**
+**Final Script Tunneling by PT RAJA SERVER PREMIUM**
 
 <p align="center">
   <img src="ss.png" width="420">
@@ -115,7 +115,7 @@ This project is proprietary. Contact the author for licensing information.
 
 ---
 
-**ARI STORE - ARISCTUNNEL V4**
+**PT RAJA SERVER PREMIUM - ARISCTUNNEL V4**
 
 
 
